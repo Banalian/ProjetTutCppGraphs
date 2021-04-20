@@ -13,7 +13,11 @@
 
 
 #define ERRFileNotOpen 200
-#define ERRBadFormatFileGraph 201
+#define ERRBadFormatLineGraph 201
+#define ERRBadFormatFileGraph 202
+#define ERREmptyFile 203
+#define ERRBadSumNumber 204
+#define ERRBadArcNumber 205
 
 /**
 * @brief Cree un graph oriente a partir d'un nom de fichier/chemin vers un fichier
@@ -55,3 +59,6 @@
 * ]
 */
 Cgraphe* GraphTextFileParser(char* pcPath);
+
+
+inline void getNextLine(std::fstream* myFile, char* line);

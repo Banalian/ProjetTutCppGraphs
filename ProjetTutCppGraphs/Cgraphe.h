@@ -40,14 +40,14 @@ public:
 	* @param iNumSommetDepart Le numero du sommet de depart
 	* @param iNumSommetArrive Le numero du sommet d'arrivee
 	*/
-	void GRAAddArc(int iNumSommetDepart, int iNumSommetArrive);
+	void GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee);
 	
 	/**
 	* @brief Permet de supprimer un arc entre deux sommets
 	* @param iNumSommetDepart Le numero du sommet de depart
 	* @param iNumSommetArrive Le numero du sommet d'arrivee
 	*/
-	void GRADeleteArc(int iNumSommetDepart, int iNumSommetArrive);
+	void GRADeleteArc(int iNumSommetDepart, int iNumSommetArrivee);
 
 
 	/**

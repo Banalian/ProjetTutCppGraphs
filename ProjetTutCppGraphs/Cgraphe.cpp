@@ -35,7 +35,7 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 * @param iNumSommetDepart Le numero du sommet de depart
 * @param iNumSommetArrive Le numero du sommet d'arrivee
 */
-void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrive)
+void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee)
 {
 }
 
@@ -44,7 +44,7 @@ void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrive)
 * @param iNumSommetDepart Le numero du sommet de depart
 * @param iNumSommetArrive Le numero du sommet d'arrivee
 */
-void Cgraphe::GRADeleteArc(int iNumSommetDepart, int iNumSommetArrive)
+void Cgraphe::GRADeleteArc(int iNumSommetDepart, int iNumSommetArrivee)
 {
 }
 

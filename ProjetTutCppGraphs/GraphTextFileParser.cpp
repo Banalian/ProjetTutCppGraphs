@@ -43,14 +43,98 @@
 */
 Cgraphe* GraphTextFileParser(char* pcPath){
 	std::fstream myFile(pcPath);
+	int iBoucle, nbSommets, nbArcs, numSom, numArcDepart, numArcArrivee;
+	char *buf, *line;
+	Cgraphe *pGRAtemp = nullptr;
 
-
+	line = new char[BUFFSIZE];
 
 	if (myFile.is_open()) {
 
+		
 
 		try {
-			char *line = new char[BUFFSIZE];
+			
+
+
+			//Recuperation du nombre de sommets puis d'arcs
+			getNextLine(&myFile, line);
+
+
+			strtok(line, "=");
+			buf = strtok(NULL, "=");
+			nbSommets = atoi(buf);
+			std::cout << "VAR nbSommets = "<< nbSommets << std::endl;
+
+			getNextLine(&myFile, line);
+
+			strtok(line, "=");
+			buf = strtok(NULL, "=");
+			nbArcs = atoi(buf);
+			std::cout << "VAR nbArcs = "<< nbArcs << std::endl;
+
+			getNextLine(&myFile, line);
+
+
+			//Recuperation des numeros de sommet et ajout dans le graph
+			if (strcmp(line, "Sommets=[")) {
+				throw Cexception(ERRBadFormatLineGraph);
+			}
+
+			pGRAtemp = new Cgraphe();
+				
+			for (iBoucle = 0; iBoucle < nbSommets; iBoucle++) {
+				getNextLine(&myFile, line);
+				if (!strcmp(line, "]")) {
+					throw Cexception(ERRBadSumNumber);
+				}
+				
+				strtok(line, "=");
+				buf = strtok(NULL, "=");
+				numSom = atoi(buf);
+				pGRAtemp->GRAAddSommet(numSom);
+
+				std::cout << "Sommet "<< iBoucle << "VAR nbSom = "<< numSom <<std::endl;
+				
+				
+			}
+			
+			getNextLine(&myFile, line);
+			if (strcmp(line, "]")) {
+				throw Cexception(ERRBadSumNumber);
+			}
+
+
+			//Recuperation des arcs et ajout dans le graph
+			getNextLine(&myFile, line);
+			if (strcmp(line, "Arcs=[")) {
+				throw Cexception(ERRBadFormatLineGraph);
+			}
+
+
+			for (iBoucle = 0; iBoucle < nbArcs; iBoucle++) {
+				getNextLine(&myFile, line);
+				if (!strcmp(line, "]")) {
+					throw Cexception(ERRBadArcNumber);
+				}
+
+				strtok(line, "=");
+				buf = strtok(NULL, "=");
+				numArcDepart = atoi(buf);
+				buf = strtok(NULL, "=");
+				numArcArrivee = atoi(buf);
+				pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee);
+
+				std::cout << "Arc " << iBoucle << "VAR numArcDepart = "<< numArcDepart << " AND numArcArrivee = " << numArcArrivee <<std::endl;
+
+
+
+			}
+
+			getNextLine(&myFile, line);
+			if (strcmp(line, "]")) {
+				throw Cexception(ERRBadArcNumber);
+			}
 
 
 
@@ -60,11 +144,29 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			int iCodeErr = e.EXCLire_Code();
 			switch (iCodeErr)
 			{
-			case 0:
+			case ERREmptyFile:
+				std::cout << "Erreur : Fichier Vide" << std::endl;
+				break;
+			case ERRBadFormatLineGraph:
+				std::cout << "Erreur : Format du fichier nom respecte (verifiez la convention d'ecriture du fichier" << std::endl;
+				break;
+			case ERRBadSumNumber:
+				std::cout << "Erreur : Le Nombre de sommets donnee est different de ce que trouve le parser" << std::endl;
+				break;
+			case ERRBadArcNumber:
+				std::cout << "Erreur : Le Nombre d'arcs donnee est different de ce que trouve le parser" << std::endl;
 				break;
 			default:
 				std::cout << "Erreur non repertoriee" << std::endl;
 				break;
+			}
+
+			if (line) {
+				delete line;
+			}
+			myFile.close();
+			if (pGRAtemp) {
+				delete pGRAtemp;
 			}
 
 			throw Cexception(ERRBadFormatFileGraph);
@@ -76,4 +178,14 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 
 
 	return nullptr;
+}
+
+inline void getNextLine(std::fstream* myFile, char *line)
+{
+	do {
+		myFile->getline(line, BUFFSIZE);
+		if (line == nullptr) {
+			throw Cexception(ERREmptyFile);
+		}
+	} while (!strcmp(line, ""));
 }
