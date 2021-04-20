@@ -6,6 +6,7 @@ class Csommet
 private:
 
 	int iNumero;
+	static int idernierSommet; //Garde en mémoire le numero du dernier sommet cree
 
 	Carc** pARCtabArrivant;
 	Carc** pARCtabSortant;
@@ -13,6 +14,7 @@ private:
 
 public:
 
+	Csommet();
 	Csommet(int iNum);
 	~Csommet();
 
@@ -23,6 +25,7 @@ public:
 	void SOMDeleteArcSortant(Carc* pARCelem);
 
 	int SOMGetSomNum();
+	int SOMGetdernierSommet();
 	void SOMAfficherSommet();
 
 
