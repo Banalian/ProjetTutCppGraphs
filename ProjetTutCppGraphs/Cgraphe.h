@@ -4,11 +4,19 @@
 #include "Carc.h"
 #include "Cexception.h"
 
+#define ERRSumAlreadyExist 301
+#define ERRSumDoesntExist 302
+
+
 class Cgraphe
 {
 private:
 	/*Tableau de Sommet de tout le graphe.*/
 	Csommet **pSOMtab;
+
+	int iNbSommets;
+
+	bool GRAIsSomInTab(int iNumSom);
 
 public:
 
@@ -21,6 +29,9 @@ public:
 	* @brief Destructeur de Cgraphe
 	*/
 	~Cgraphe();
+
+
+	int GRAGetNbSommets();
 
 	/**
 	* @brief Permet d'ajouter un Sommet dans le graphe, sans aucun Arc
