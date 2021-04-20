@@ -155,6 +155,7 @@
     <ClCompile Include="Cexception.cpp" />
     <ClCompile Include="Cgraphe.cpp" />
     <ClCompile Include="Csommet.cpp" />
+    <ClCompile Include="GraphTextFileParser.cpp" />
     <ClCompile Include="ProjetTutCppGraphs.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="Cexception.h" />
     <ClInclude Include="Cgraphe.h" />
     <ClInclude Include="Csommet.h" />
+    <ClInclude Include="GraphTextFileParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
