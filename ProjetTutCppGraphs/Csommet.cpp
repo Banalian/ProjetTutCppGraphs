@@ -1,4 +1,5 @@
 #include "Csommet.h"
+#include <iostream>
 int Csommet::idernierSommet = 0;
 
 /**
@@ -8,6 +9,9 @@ Csommet::Csommet()
 {
 	iNumero = idernierSommet + 1;
 	idernierSommet += 1;
+
+	iNbrArcArrivant = 0;
+	iNbrArcSortant = 0;
 
 	pARCtabArrivant = nullptr;
 	pARCtabArrivant = nullptr;
@@ -22,6 +26,9 @@ Csommet::Csommet(int iNum)
 	iNumero = iNum;
 	idernierSommet = iNum;
 
+	iNbrArcArrivant = 0;
+	iNbrArcSortant = 0;
+
 	pARCtabArrivant = nullptr;
 	pARCtabSortant = nullptr;
 }
@@ -31,40 +38,106 @@ Csommet::Csommet(int iNum)
  */
 Csommet::~Csommet()
 {
+	int iBoucle = 0;
+	for (iBoucle; iBoucle <iNbrArcArrivant; iBoucle++)
+	{
+		delete pARCtabArrivant[iBoucle];
+	}
 
+	iBoucle = 0;
+	
+	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	{
+		delete pARCtabSortant[iBoucle];
+	}
+	delete pARCtabArrivant;
+	delete pARCtabSortant;
 }
 
 /**
  * @brief Ajoute un arc arrivant
- * @param Pointeur vers un arc
+ * @param Pointeur vers l'arc a ajouter
  */
-void Csommet::SOMAddArcArrivant(Carc * pARCelem)
+void Csommet::SOMAddArcArrivant(int iDest)
 {
+	**pARCtabArrivant = Carc(iDest);
+	iNbrArcArrivant += 1;
 }
 
 /**
  * @brief Ajoute un arc sortant
- * @param Pointeur vers un arc
+ * @param Pointeur vers l'arc a ajouter
  */
-void Csommet::SOMAddArcSortant(Carc * pARCelem)
+void Csommet::SOMAddArcSortant(int iDest)
 {
+	**pARCtabSortant = Carc(iDest);
+	iNbrArcSortant += 1;
 }
 
 /**
  * @brief Supprime un arc arrivant
- * @param Pointeur vers un arc
+ * @param Pointeur vers l'arc à supprimer
  */
-void Csommet::SOMDeleteArcArrivant(Carc * pARCelem)
+void Csommet::SOMDeleteArcArrivant(int iDest)
 {
+	int iBoucle = 0;
+	int iDecalage = 0;
+
+	while(pARCtabArrivant[iBoucle]->ARCgetDest() != iDest)	//On parcourt la liste des arcs jusqu'à tomber sur celui à supprimer
+	{
+		iBoucle++;
+	}
+	delete pARCtabArrivant[iBoucle];
+	pARCtabArrivant[iBoucle] = nullptr;
+	iNbrArcArrivant -= 1;
+
+	Carc** pArctabTemp = new Carc*[iNbrArcArrivant];
+	iBoucle = 0;	
+	for (iBoucle; iBoucle <= iNbrArcArrivant; iBoucle++)	//On recopie la liste en supprimant la case vide
+	{
+		if (pARCtabArrivant[iBoucle] == nullptr)
+		{
+			iDecalage++;
+		}
+		pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle + iDecalage];
+	}
+	
+	delete[] pARCtabArrivant;
+	pARCtabArrivant = pArctabTemp;
 }
 
 /**
- * @brief Ajoute un arc sortant
- * @param Pointeur vers un arc
+ * @brief Supprime un arc sortant
+ * @param Pointeur vers l'arc a supprimer
  */
-void Csommet::SOMDeleteArcSortant(Carc * pARCelem)
+void Csommet::SOMDeleteArcSortant(int iDest)
 {
+	int iBoucle = 0;
+	int iDecalage = 0;
+
+	while (pARCtabSortant[iBoucle]->ARCgetDest() != iDest)	//On parcourt la liste des arcs jusqu'à tomber sur celui à supprimer
+	{
+		iBoucle++;
+	}
+	delete pARCtabSortant[iBoucle];
+	pARCtabSortant[iBoucle] = nullptr;
+	iNbrArcSortant -= 1;
+
+	Carc** pArctabTemp = new Carc*[iNbrArcSortant];
+	iBoucle = 0;
+	for (iBoucle; iBoucle <= iNbrArcSortant; iBoucle++)	//On recopie la liste en supprimant la case vide
+	{
+		if (pARCtabSortant[iBoucle] == nullptr)
+		{
+			iDecalage++;
+		}
+		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle + iDecalage];
+	}
+
+	delete[] pARCtabSortant;
+	pARCtabSortant = pArctabTemp;
 }
+
 
 /**
  * @brief Affiche le numero du sommet
@@ -90,4 +163,17 @@ int Csommet::SOMGetdernierSommet()
  */
 void Csommet::SOMAfficherSommet()
 {
+	int iBoucle = 0;
+	std::cout << "Numero de sommet :" << iNumero << std::endl;
+	std::cout << "Liste des arcs entrants : \n" ;
+	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		std::cout << pARCtabArrivant[iBoucle]->ARCgetDest << std::endl;
+	}
+	iBoucle = 0;
+	std::cout << "Liste des arcs sortants : \n";
+	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	{
+		std::cout << pARCtabSortant[iBoucle]->ARCgetDest << std::endl;
+	}
 }

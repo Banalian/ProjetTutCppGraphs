@@ -6,11 +6,13 @@ class Csommet
 private:
 
 	int iNumero;
-	static int idernierSommet; //Garde en mémoire le numero du dernier sommet cree
-
 	Carc** pARCtabArrivant;
 	Carc** pARCtabSortant;
 
+	//Attributs de confort : ne servent qu'au confort de codage
+	int iNbrArcArrivant;
+	int iNbrArcSortant;
+	static int idernierSommet; //Garde en mémoire le numero du dernier sommet cree
 
 public:
 
@@ -18,11 +20,11 @@ public:
 	Csommet(int iNum);
 	~Csommet();
 
-	void SOMAddArcArrivant(Carc* pARCelem);
-	void SOMAddArcSortant(Carc* pARCelem);
+	void SOMAddArcArrivant(int iDest);
+	void SOMAddArcSortant(int iDest);
 
-	void SOMDeleteArcArrivant(Carc* pARCelem);
-	void SOMDeleteArcSortant(Carc* pARCelem);
+	void SOMDeleteArcArrivant(int iDest);
+	void SOMDeleteArcSortant(int iDest);
 
 	int SOMGetSomNum();
 	int SOMGetdernierSommet();
