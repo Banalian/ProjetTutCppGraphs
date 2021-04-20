@@ -24,29 +24,35 @@ public:
 
 	/**
 	* @brief Permet d'ajouter un Sommet dans le graphe, sans aucun Arc
-	* @param iNum le numéro du graphe à ajouter
+	* @param iNum Le numero du sommet a ajouter
 	*/
 	void GRAAddSommet(int iNum);
 
 	/**
-	* @brief Constructeur par défaut
+	* @brief Permet de supprimer un Sommet dans le graphe, ainsi que tout ses arcs (et les arcs dans les sommets relies a celui-ci)
+	* @param iNumSom Le numero du sommet a supprimer;
 	*/
 	void GRADeleteSommet(int iNumSom);
 
 
 	/**
-	* @brief Constructeur par défaut
+	* @brief Permet d'ajouter un arc entre deux sommets
+	* @param iNumSommetDepart Le numero du sommet de depart
+	* @param iNumSommetArrive Le numero du sommet d'arrivee
 	*/
 	void GRAAddArc(int iNumSommetDepart, int iNumSommetArrive);
 	
 	/**
-	* @brief Constructeur par défaut
+	* @brief Permet de supprimer un arc entre deux sommets
+	* @param iNumSommetDepart Le numero du sommet de depart
+	* @param iNumSommetArrive Le numero du sommet d'arrivee
 	*/
 	void GRADeleteArc(int iNumSommetDepart, int iNumSommetArrive);
 
 
 	/**
-	* @brief Constructeur par défaut
+	* @brief Affichage du graph oriente, en affichant tout les sommets existants, ainsi que les arcs sortant de ce sommet
+	* afin d'eviter une redondance en affichant les arcs entrant egalement
 	*/
 	void GRAAfficherGraph();
 };
