@@ -151,7 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Carc.cpp" />
+    <ClCompile Include="Cexception.cpp" />
+    <ClCompile Include="Cgraphe.cpp" />
+    <ClCompile Include="Csommet.cpp" />
     <ClCompile Include="ProjetTutCppGraphs.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Carc.h" />
+    <ClInclude Include="Cexception.h" />
+    <ClInclude Include="Cgraphe.h" />
+    <ClInclude Include="Csommet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
