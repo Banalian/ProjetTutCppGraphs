@@ -187,3 +187,23 @@ void Csommet::SOMAfficherSommet()
 		std::cout << pARCtabSortant[iBoucle]->ARCgetDest << std::endl;
 	}
 }
+
+/**
+ * @brief Renvoie la destination de l'arc arrivant à la position iPos
+ * @param position iPos
+ * @return destination iDest
+ */
+int Csommet::SOMgetDestArrivant(int iPos)
+{
+	return pARCtabArrivant[iPos]->ARCgetDest();
+}
+
+/**
+ * @brief Renvoie la destination de l'arc sortant à la position iPos
+ * @param position iPos
+ * @return destination iDest
+ */
+int Csommet::SOMgetDestSortant(int iPos)
+{
+	return pARCtabSortant[iPos]->ARCgetDest();
+}

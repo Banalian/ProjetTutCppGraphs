@@ -31,7 +31,8 @@ public:
 	int SOMGetNbArcSortant();
 	int SOMGetdernierSommet();
 	void SOMAfficherSommet();
-
+	int SOMgetDestArrivant(int iPos);
+	int SOMgetDestSortant(int iPos);
 
 };
 
