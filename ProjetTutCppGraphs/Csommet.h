@@ -27,6 +27,8 @@ public:
 	void SOMDeleteArcSortant(int iDest);
 
 	int SOMGetSomNum();
+	int SOMGetNbArcArrivant();
+	int SOMGetNbArcSortant();
 	int SOMGetdernierSommet();
 	void SOMAfficherSommet();
 

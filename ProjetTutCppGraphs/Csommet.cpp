@@ -148,6 +148,16 @@ int Csommet::SOMGetSomNum()
 	return iNumero;
 }
 
+int Csommet::SOMGetNbArcArrivant()
+{
+	return iNbrArcArrivant;
+}
+
+int Csommet::SOMGetNbArcSortant()
+{
+	return iNbrArcSortant;
+}
+
 /**
  * @brief Affiche le numero du dernier sommet cree
  * @return Le numero du dernier sommet cree

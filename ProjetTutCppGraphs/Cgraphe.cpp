@@ -80,12 +80,32 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 	if (!GRAIsSomInTab(iNumSom)) {
 		throw Cexception(ERRSumDoesntExist);
 	}
-	int iBoucle = 0;
+	int iBoucle = 0, jBoucle, iArrivant, iSortant;
 
 	while(pSOMtab[iBoucle]->SOMGetSomNum() != iNumSom) {
 		iBoucle++;
 	}
-	
+	//iBoucle a partir d'ici represente l'emplacement du sommet a supprimer.
+
+	iArrivant = pSOMtab[iBoucle]->SOMGetNbArcArrivant();
+	iSortant = pSOMtab[iBoucle]->SOMGetNbArcSortant();
+
+	//pour chaque arc ARRIVANT, on supprime l'arc PARTANT dans le sommet correspondant
+	for (jBoucle = 0; jBoucle < iArrivant; jBoucle++) {
+		//get arc jBoucle du sommet iBoucle, recuperer la destination
+		
+		//aller delete d'arc de dest iBoucle dans le sommet dont le numero a ete recup avant
+	}
+
+	for (jBoucle = 0; jBoucle < iSortant; jBoucle++) {
+		//get arc jBoucle du sommet iBoucle, recuperer la destination
+
+		//aller delete d'arc de dest iBoucle dans le sommet dont le numero a ete recup avant
+	}
+
+
+
+
 	delete pSOMtab[iBoucle];
 	
 	Csommet **pSOMtabTemp;
