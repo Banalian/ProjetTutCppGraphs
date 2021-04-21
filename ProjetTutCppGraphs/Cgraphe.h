@@ -18,6 +18,8 @@ private:
 
 	bool GRAIsSomInTab(int iNumSom);
 
+	int GRAPlaceOfSomInTab(int iNumSom);
+
 public:
 
 	/**
