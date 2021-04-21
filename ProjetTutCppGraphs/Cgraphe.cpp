@@ -1,18 +1,11 @@
 #include "Cgraphe.h"
 
-bool Cgraphe::GRAIsSomInTab(int iNumSom)
-{
-	int iBoucle;
 
-	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
-		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
-			return true;
-		}
-	}
-
-	return false;
-}
-
+/**
+* @brief Permet de connaitre la position dans le tableau d'un sommet du graph
+* @param iNumSom le numero a tester
+* @return la poisition dans le tableau, et -1 s'il n'a pas trouve
+*/
 int Cgraphe::GRAPlaceOfSomInTab(int iNumSom)
 {
 	int iBoucle;
@@ -51,9 +44,32 @@ Cgraphe::~Cgraphe()
 }
 
 
+/**
+* @brief Recuperer le nombre de sommets dans le tableau
+* @return le Nombre total de sommets
+*/
 int Cgraphe::GRAGetNbSommets()
 {
 	return iNbSommets;
+}
+
+
+/**
+* @brief Permet de savoir si un numero est un sommet du graph
+* @param iNumSom le numero a tester
+* @return Vrai si le numero fait bien parti du graph, faux sinon
+*/
+bool Cgraphe::GRAIsSomInTab(int iNumSom)
+{
+	int iBoucle;
+
+	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**
@@ -89,7 +105,6 @@ void Cgraphe::GRAAddSommet(int iNum)
 void Cgraphe::GRADeleteSommet(int iNumSom)
 {
 
-	//-------------------------------------------------NON FINI : il faut egalement supprimer les arc dans les sommets relie au sommet a supprimer-----------
 	if (!GRAIsSomInTab(iNumSom)) {
 		throw Cexception(ERRSumDoesntExist);
 	}
