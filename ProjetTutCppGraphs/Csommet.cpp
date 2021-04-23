@@ -114,19 +114,27 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
 	pARCtabArrivant[iBoucle] = nullptr;
 	iNbrArcArrivant -= 1;
 
-	Carc** pArctabTemp = new Carc*[iNbrArcArrivant];
-	iBoucle = 0;	
-	for (iBoucle; iBoucle <= iNbrArcArrivant; iBoucle++)	//On recopie la liste en supprimant la case vide
+	if (iNbrArcArrivant != 0)
 	{
-		if (pARCtabArrivant[iBoucle] == nullptr)
+		Carc** pArctabTemp = new Carc*[iNbrArcArrivant];
+		iBoucle = 0;
+		for (iBoucle; iBoucle <= iNbrArcArrivant; iBoucle++)	//On recopie la liste en supprimant la case vide
 		{
-			iDecalage++;
+			if (pARCtabArrivant[iBoucle] == nullptr)
+			{
+				iDecalage++;
+			}
+			pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle + iDecalage];
 		}
-		pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle + iDecalage];
+
+		delete[] pARCtabArrivant;
+		pARCtabArrivant = pArctabTemp;
 	}
-	
-	delete[] pARCtabArrivant;
-	pARCtabArrivant = pArctabTemp;
+	else
+	{
+		delete[] pARCtabArrivant;
+		pARCtabArrivant = nullptr;
+	}
 }
 
 /**
@@ -146,19 +154,27 @@ void Csommet::SOMDeleteArcSortant(int iDest)
 	pARCtabSortant[iBoucle] = nullptr;
 	iNbrArcSortant -= 1;
 
-	Carc** pArctabTemp = new Carc*[iNbrArcSortant];
-	iBoucle = 0;
-	for (iBoucle; iBoucle <= iNbrArcSortant; iBoucle++)	//On recopie la liste en supprimant la case vide
+	if (iNbrArcSortant != 0)
 	{
-		if (pARCtabSortant[iBoucle] == nullptr)
+		Carc** pArctabTemp = new Carc*[iNbrArcSortant];
+		iBoucle = 0;
+		for (iBoucle; iBoucle <= iNbrArcSortant; iBoucle++)	//On recopie la liste en supprimant la case vide
 		{
-			iDecalage++;
+			if (pARCtabSortant[iBoucle] == nullptr)
+			{
+				iDecalage++;
+			}
+			pArctabTemp[iBoucle] = pARCtabSortant[iBoucle + iDecalage];
 		}
-		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle + iDecalage];
-	}
 
-	delete[] pARCtabSortant;
-	pARCtabSortant = pArctabTemp;
+		delete[] pARCtabSortant;
+		pARCtabSortant = pArctabTemp;
+	}
+	else
+	{
+		delete[] pARCtabSortant;
+		pARCtabSortant = nullptr;
+	}
 }
 
 
