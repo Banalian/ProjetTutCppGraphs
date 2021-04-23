@@ -18,6 +18,7 @@ public:
 
 	Csommet();
 	Csommet(int iNum);
+	//Csommet(Csommet sommet);
 	~Csommet();
 
 	void SOMAddArcArrivant(int iDest);
