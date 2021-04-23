@@ -215,7 +215,15 @@ void Cgraphe::GRAAfficherGraph()
 
 }
 
+
+/**
+* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
+*/
 void Cgraphe::GRAInverserGraph()
 {
+	int iBoucle;
 
+	for (iBoucle = 0; iBoucle < GRAGetNbSommets(); iBoucle++) {
+		pSOMtab[iBoucle]->SOMInverserArcSom();
+	}
 }

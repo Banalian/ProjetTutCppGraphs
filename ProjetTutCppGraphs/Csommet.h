@@ -36,8 +36,9 @@ public:
 
 	/**
 	* @brief Permet d'inverser tout les arcs du sommet.
+	* Une simple inversion entre A et B permet d'atteindre cela.
 	*/
-	void SOMInverserArcSom();//Je m'en occupe Corentin
+	void SOMInverserArcSom();
 
 };
 
