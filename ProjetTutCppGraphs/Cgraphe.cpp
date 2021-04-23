@@ -214,3 +214,8 @@ void Cgraphe::GRAAfficherGraph()
 	}
 
 }
+
+void Cgraphe::GRAInverserGraph()
+{
+
+}

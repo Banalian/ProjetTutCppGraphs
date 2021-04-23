@@ -14,6 +14,7 @@ private:
 	/*Tableau de Sommet de tout le graphe.*/
 	Csommet **pSOMtab;
 
+	/*Nombre de sommets contenu dans le graph */
 	int iNbSommets;
 
 	/**
@@ -82,5 +83,10 @@ public:
 	* afin d'eviter une redondance en affichant les arcs entrant egalement
 	*/
 	void GRAAfficherGraph();
+
+	/**
+	* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
+	*/
+	void GRAInverserGraph();
 };
 

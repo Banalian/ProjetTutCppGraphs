@@ -34,5 +34,10 @@ public:
 	int SOMgetDestArrivant(int iPos);
 	int SOMgetDestSortant(int iPos);
 
+	/**
+	* @brief Permet d'inverser tout les arcs du sommet.
+	*/
+	void SOMInverserArcSom();//Je m'en occupe Corentin
+
 };
 
