@@ -14,9 +14,15 @@ private:
 	/*Tableau de Sommet de tout le graphe.*/
 	Csommet **pSOMtab;
 
+	/*Nombre de sommets contenu dans le graph */
 	int iNbSommets;
 
-	bool GRAIsSomInTab(int iNumSom);
+	/**
+	* @brief Permet de connaitre la position dans le tableau d'un sommet du graph
+	* @param iNumSom le numero a tester
+	* @return la poisition dans le tableau, et -1 s'il n'a pas trouve
+	*/
+	int GRAPlaceOfSomInTab(int iNumSom);
 
 public:
 
@@ -31,7 +37,18 @@ public:
 	~Cgraphe();
 
 
+	/**
+	* @brief Recuperer le nombre de sommets dans le tableau
+	* @return le Nombre total de sommets
+	*/
 	int GRAGetNbSommets();
+
+	/**
+	* @brief Permet de savoir si un numero est un sommet du graph
+	* @param iNumSom le numero a tester
+	* @return Vrai si le numero fait bien parti du graph, faux sinon
+	*/
+	bool GRAIsSomInTab(int iNumSom);
 
 	/**
 	* @brief Permet d'ajouter un Sommet dans le graphe, sans aucun Arc
@@ -66,5 +83,10 @@ public:
 	* afin d'eviter une redondance en affichant les arcs entrant egalement
 	*/
 	void GRAAfficherGraph();
+
+	/**
+	* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
+	*/
+	void GRAInverserGraph();
 };
 

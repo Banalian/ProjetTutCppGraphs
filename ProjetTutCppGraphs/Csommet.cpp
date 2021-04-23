@@ -207,3 +207,20 @@ int Csommet::SOMgetDestSortant(int iPos)
 {
 	return pARCtabSortant[iPos]->ARCgetDest();
 }
+
+/**
+* @brief Permet d'inverser tout les arcs du sommet.
+* Une simple inversion entre A et B permet d'atteindre cela.
+*/
+void Csommet::SOMInverserArcSom()
+{
+
+	Carc** pARCTemp;
+
+	pARCTemp = pARCtabArrivant;
+
+	pARCtabArrivant = pARCtabSortant;
+
+	pARCtabSortant = pARCTemp;
+
+}

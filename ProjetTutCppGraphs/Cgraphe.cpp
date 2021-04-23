@@ -1,16 +1,22 @@
 #include "Cgraphe.h"
 
-bool Cgraphe::GRAIsSomInTab(int iNumSom)
+
+/**
+* @brief Permet de connaitre la position dans le tableau d'un sommet du graph
+* @param iNumSom le numero a tester
+* @return la poisition dans le tableau, et -1 s'il n'a pas trouve
+*/
+int Cgraphe::GRAPlaceOfSomInTab(int iNumSom)
 {
 	int iBoucle;
 
 	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
-			return true;
+			return iBoucle;
 		}
 	}
 
-	return false;
+	return -1;
 }
 
 /**
@@ -38,9 +44,32 @@ Cgraphe::~Cgraphe()
 }
 
 
+/**
+* @brief Recuperer le nombre de sommets dans le tableau
+* @return le Nombre total de sommets
+*/
 int Cgraphe::GRAGetNbSommets()
 {
 	return iNbSommets;
+}
+
+
+/**
+* @brief Permet de savoir si un numero est un sommet du graph
+* @param iNumSom le numero a tester
+* @return Vrai si le numero fait bien parti du graph, faux sinon
+*/
+bool Cgraphe::GRAIsSomInTab(int iNumSom)
+{
+	int iBoucle;
+
+	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
+			return true;
+		}
+	}
+
+	return false;
 }
 
 /**
@@ -76,11 +105,10 @@ void Cgraphe::GRAAddSommet(int iNum)
 void Cgraphe::GRADeleteSommet(int iNumSom)
 {
 
-	//-------------------------------------------------NON FINI : il faut egalement supprimer les arc dans les sommets relie au sommet a supprimer-----------
 	if (!GRAIsSomInTab(iNumSom)) {
 		throw Cexception(ERRSumDoesntExist);
 	}
-	int iBoucle = 0, jBoucle, iArrivant, iSortant;
+	int iBoucle = 0, jBoucle, iArrivant, iSortant, iArcToDelete;
 
 	while(pSOMtab[iBoucle]->SOMGetSomNum() != iNumSom) {
 		iBoucle++;
@@ -93,14 +121,18 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 	//pour chaque arc ARRIVANT, on supprime l'arc PARTANT dans le sommet correspondant
 	for (jBoucle = 0; jBoucle < iArrivant; jBoucle++) {
 		//get arc jBoucle du sommet iBoucle, recuperer la destination
+		iArcToDelete = pSOMtab[iBoucle]->SOMgetDestArrivant(jBoucle);
 		
 		//aller delete d'arc de dest iBoucle dans le sommet dont le numero a ete recup avant
+		pSOMtab[iArcToDelete]->SOMDeleteArcSortant(iBoucle);
 	}
 
 	for (jBoucle = 0; jBoucle < iSortant; jBoucle++) {
 		//get arc jBoucle du sommet iBoucle, recuperer la destination
+		iArcToDelete = pSOMtab[iBoucle]->SOMgetDestSortant(jBoucle);
 
 		//aller delete d'arc de dest iBoucle dans le sommet dont le numero a ete recup avant
+		pSOMtab[iArcToDelete]->SOMDeleteArcArrivant(iBoucle);
 	}
 
 
@@ -139,6 +171,15 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 */
 void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee)
 {
+	int iPosSomDepart = GRAPlaceOfSomInTab(iNumSommetDepart);
+	int iPosSomArrivee = GRAPlaceOfSomInTab(iNumSommetArrivee);
+
+	if (iPosSomArrivee == -1 || iPosSomArrivee == -1) {
+		throw Cexception(ERRSumDoesntExist);
+	}
+
+	pSOMtab[iPosSomDepart]->SOMAddArcSortant(iNumSommetArrivee);
+	pSOMtab[iPosSomArrivee]->SOMAddArcArrivant(iNumSommetDepart);
 }
 
 /**
@@ -148,6 +189,16 @@ void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee)
 */
 void Cgraphe::GRADeleteArc(int iNumSommetDepart, int iNumSommetArrivee)
 {
+	int iPosSomDepart = GRAPlaceOfSomInTab(iNumSommetDepart);
+	int iPosSomArrivee = GRAPlaceOfSomInTab(iNumSommetArrivee);
+
+	if ( iPosSomArrivee == -1 || iPosSomArrivee == -1 ) {
+		throw Cexception(ERRSumDoesntExist);
+	}
+
+	pSOMtab[iPosSomDepart]->SOMDeleteArcSortant(iNumSommetArrivee);
+	pSOMtab[iPosSomArrivee]->SOMDeleteArcArrivant(iNumSommetDepart);
+
 }
 
 /**
@@ -162,4 +213,17 @@ void Cgraphe::GRAAfficherGraph()
 		pSOMtab[iBoucle]->SOMAfficherSommet();
 	}
 
+}
+
+
+/**
+* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
+*/
+void Cgraphe::GRAInverserGraph()
+{
+	int iBoucle;
+
+	for (iBoucle = 0; iBoucle < GRAGetNbSommets(); iBoucle++) {
+		pSOMtab[iBoucle]->SOMInverserArcSom();
+	}
 }
