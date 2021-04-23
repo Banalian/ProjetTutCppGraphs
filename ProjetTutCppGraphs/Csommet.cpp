@@ -214,16 +214,16 @@ void Csommet::SOMAfficherSommet()
 {
 	int iBoucle = 0;
 	std::cout << "Numero de sommet :" << iNumero << std::endl;
-	std::cout << "Liste des arcs entrants : \n" ;
+	std::cout << "/t Liste des arcs entrants : \n" ;
 	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
 	{
-		std::cout << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
+		std::cout << "/t/t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
 	}
 	iBoucle = 0;
-	std::cout << "Liste des arcs sortants : \n";
+	std::cout << "/t Liste des arcs sortants : \n";
 	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
 	{
-		std::cout << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
+		std::cout << "/t/t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
 	}
 }
 
