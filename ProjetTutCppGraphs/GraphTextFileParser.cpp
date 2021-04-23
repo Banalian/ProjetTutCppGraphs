@@ -156,6 +156,12 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			case ERRBadArcNumber:
 				std::cout << "Erreur : Le Nombre d'arcs donnee est different de ce que trouve le parser" << std::endl;
 				break;
+			case ERRSumAlreadyExist:
+				std::cout << "Erreur : un des sommets a ete nomme deux fois dans le fichier" << std::endl;
+				break;
+			case ERRSumDoesntExist:
+				std::cout << "Erreur : un des sommets nomme dans un arc n'existe pas et n'a pas ete nomme dans le fichier" << std::endl;
+				break;
 			default:
 				std::cout << "Erreur non repertoriee" << std::endl;
 				break;
