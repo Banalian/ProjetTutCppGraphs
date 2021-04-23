@@ -183,7 +183,7 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 	}
 
 
-	return nullptr;
+	return pGRAtemp;
 }
 
 inline void getNextLine(std::fstream* myFile, char *line)

@@ -108,7 +108,7 @@ void Cgraphe::GRAAddSommet(int iNum)
 	Csommet **pSOMtabTemp = new Csommet*[iNbSommets];
 	int iBoucle;
 	for (iBoucle = 0; iBoucle < (iNbSommets - 1); iBoucle++) {
-		pSOMtabTemp[iBoucle] = pSOMtabTemp[iBoucle];
+		pSOMtabTemp[iBoucle] = pSOMtab[iBoucle];
 	}
 
 	pSOMtabTemp[iBoucle] = new Csommet(iNum);
