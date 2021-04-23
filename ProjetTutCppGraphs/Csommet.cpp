@@ -33,6 +33,10 @@ Csommet::Csommet(int iNum)
 	pARCtabSortant = nullptr;
 }
 
+/**
+* @brief Constructeur de recopie
+* @param Le sommet à recopier
+*/
 Csommet::Csommet(Csommet & SOMsommet)
 {
 	iNumero = SOMsommet.iNumero;
@@ -41,6 +45,7 @@ Csommet::Csommet(Csommet & SOMsommet)
 	iNbrArcArrivant = SOMsommet.iNbrArcArrivant;
 	iNbrArcSortant = SOMsommet.iNbrArcSortant;
 	idernierSommet = SOMsommet.idernierSommet;
+
 }
 
 /**
@@ -66,7 +71,7 @@ Csommet::~Csommet()
 
 /**
  * @brief Ajoute un arc arrivant
- * @param Pointeur vers l'arc a ajouter
+ * @param Numero du sommet a relier
  */
 void Csommet::SOMAddArcArrivant(int iDest)
 {
@@ -88,7 +93,7 @@ void Csommet::SOMAddArcArrivant(int iDest)
 
 /**
  * @brief Ajoute un arc sortant
- * @param Pointeur vers l'arc a ajouter
+ * @param Numero du sommet a relier
  */
 void Csommet::SOMAddArcSortant(int iDest)
 {
@@ -109,7 +114,7 @@ void Csommet::SOMAddArcSortant(int iDest)
 
 /**
  * @brief Supprime un arc arrivant
- * @param Pointeur vers l'arc à supprimer
+ * @param Numero du sommet a delier
  */
 void Csommet::SOMDeleteArcArrivant(int iDest)
 {
@@ -149,7 +154,7 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
 
 /**
  * @brief Supprime un arc sortant
- * @param Pointeur vers l'arc a supprimer
+ * @param Numero du sommet a delier
  */
 void Csommet::SOMDeleteArcSortant(int iDest)
 {
@@ -197,11 +202,17 @@ int Csommet::SOMGetSomNum()
 	return iNumero;
 }
 
+/**
+* @brief Donne le nobre d'arcs arrivants
+*/
 int Csommet::SOMGetNbArcArrivant()
 {
 	return iNbrArcArrivant;
 }
 
+/**
+* @brief Donne le nobre d'arcs sortants
+*/
 int Csommet::SOMGetNbArcSortant()
 {
 	return iNbrArcSortant;
