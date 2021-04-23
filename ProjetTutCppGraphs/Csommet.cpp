@@ -60,8 +60,20 @@ Csommet::~Csommet()
  */
 void Csommet::SOMAddArcArrivant(int iDest)
 {
-	**pARCtabArrivant = Carc(iDest);
+	int iBoucle = 0;
+
+	Carc** pArctabTemp = new Carc*[iNbrArcArrivant+1];
+	for (iBoucle; iBoucle < (iNbrArcArrivant); iBoucle++) // On recopie dans case à case dans un tableau temporaire de taille +1
+	{
+		pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle];
+	}
+
+	pArctabTemp[iNbrArcArrivant] = new Carc(iDest);
+	delete[] pARCtabArrivant;
+	pARCtabArrivant = pArctabTemp;
+
 	iNbrArcArrivant += 1;
+
 }
 
 /**
@@ -70,7 +82,18 @@ void Csommet::SOMAddArcArrivant(int iDest)
  */
 void Csommet::SOMAddArcSortant(int iDest)
 {
-	**pARCtabSortant = Carc(iDest);
+	int iBoucle = 0;
+
+	Carc** pArctabTemp = new Carc*[iNbrArcSortant + 1];
+	for (iBoucle; iBoucle < (iNbrArcSortant); iBoucle++) // On recopie dans case à case dans un tableau temporaire de taille +1
+	{
+		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle];
+	}
+
+	pArctabTemp[iNbrArcSortant] = new Carc(iDest);
+	delete[] pARCtabSortant;
+	pARCtabSortant = pArctabTemp;
+
 	iNbrArcSortant += 1;
 }
 
@@ -178,13 +201,13 @@ void Csommet::SOMAfficherSommet()
 	std::cout << "Liste des arcs entrants : \n" ;
 	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
 	{
-		std::cout << pARCtabArrivant[iBoucle]->ARCgetDest << std::endl;
+		std::cout << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
 	}
 	iBoucle = 0;
 	std::cout << "Liste des arcs sortants : \n";
 	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
 	{
-		std::cout << pARCtabSortant[iBoucle]->ARCgetDest << std::endl;
+		std::cout << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
 	}
 }
 
