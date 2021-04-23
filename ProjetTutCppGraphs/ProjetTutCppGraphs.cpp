@@ -33,6 +33,7 @@ int main(int argc, char*argv[])
 		pGRAGraphFile->GRAAfficherGraph();
 
 		pGRAGraphFileInverse = new Cgraphe(*pGRAGraphFile);
+		std::cout << "Inversion du graph" << std::endl;
 		
 		pGRAGraphFileInverse->GRAInverserGraph();
 

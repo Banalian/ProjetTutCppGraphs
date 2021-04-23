@@ -6,6 +6,7 @@
 */
 Carc::Carc(int iDest)
 {
+	iDestination = iDest;
 }
 
 /**
@@ -21,6 +22,7 @@ Carc::~Carc()
 */
 void Carc::ARCModifDest(int iNewDest)
 {
+	iDestination = iNewDest;
 }
 
 /**
@@ -29,5 +31,5 @@ void Carc::ARCModifDest(int iNewDest)
 */
 int Carc::ARCgetDest()
 {
-	return 0;
+	return iDestination;
 }
