@@ -33,6 +33,16 @@ Csommet::Csommet(int iNum)
 	pARCtabSortant = nullptr;
 }
 
+Csommet::Csommet(Csommet & SOMsommet)
+{
+	iNumero = SOMsommet.iNumero;
+	pARCtabArrivant = SOMsommet.pARCtabArrivant;
+	pARCtabSortant = SOMsommet.pARCtabSortant;
+	iNbrArcArrivant = SOMsommet.iNbrArcArrivant;
+	iNbrArcSortant = SOMsommet.iNbrArcSortant;
+	idernierSommet = SOMsommet.idernierSommet;
+}
+
 /**
  * @brief Destructeur par défaut
  */
@@ -214,16 +224,16 @@ void Csommet::SOMAfficherSommet()
 {
 	int iBoucle = 0;
 	std::cout << "Numero de sommet :" << iNumero << std::endl;
-	std::cout << "/t Liste des arcs entrants : \n" ;
+	std::cout << "\t Liste des arcs entrants : \n" ;
 	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
 	{
-		std::cout << "/t/t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
+		std::cout << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
 	}
 	iBoucle = 0;
-	std::cout << "/t Liste des arcs sortants : \n";
+	std::cout << "\t Liste des arcs sortants : \n";
 	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
 	{
-		std::cout << "/t/t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
+		std::cout << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
 	}
 }
 
