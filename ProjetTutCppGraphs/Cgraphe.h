@@ -30,6 +30,11 @@ public:
 	* @brief Constructeur par défaut
 	*/
 	Cgraphe();
+
+	/**
+	* @brief Constructeur de recopie
+	*/
+	Cgraphe(Cgraphe& GRAelem);
 	
 	/**
 	* @brief Destructeur de Cgraphe

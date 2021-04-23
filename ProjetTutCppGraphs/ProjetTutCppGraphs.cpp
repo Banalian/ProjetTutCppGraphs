@@ -14,19 +14,37 @@
 
 int main(int argc, char*argv[])
 {
-    std::cout << "Hello World!\n";//test push
 
-	Cgraphe *testGraph;
+	if (argc < 2) {
+		std::cout << "Erreur :  pas de fichier transmis en parametre de la fonction" << std::endl;
+		return -1;
+	}
+
+	if (argc > 2) {
+		std::cout << "Erreur :  Trop de fichiers transmis en parametre de la fonction" << std::endl;
+		return -1;
+	}
+
+	Cgraphe *pGRAGraphFile, *pGRAGraphFileInverse;
 
 	try {
-		testGraph = GraphTextFileParser(argv[1]);
+		pGRAGraphFile = GraphTextFileParser(argv[1]);
+
+		pGRAGraphFile->GRAAfficherGraph();
+
+		pGRAGraphFileInverse = new Cgraphe(*pGRAGraphFile);
+		
+		pGRAGraphFileInverse->GRAInverserGraph();
+
+		pGRAGraphFileInverse->GRAAfficherGraph();
+
 	}
 	catch (Cexception e) {
 		int iCodeErr = e.EXCLire_Code();
 		switch (iCodeErr)
 		{
 		case ERRBadFormatFileGraph:
-			std::cout << "Erreur : Le fichier n'avait pas un format correct" << std::endl;
+			std::cout << "Erreur : Le fichier n'avait pas un format correct ou " << std::endl;
 			break;
 		default:
 			std::cout << "Erreur non repertoriee" << std::endl;

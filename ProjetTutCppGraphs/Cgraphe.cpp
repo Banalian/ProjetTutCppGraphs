@@ -28,6 +28,27 @@ Cgraphe::Cgraphe()
 	iNbSommets = 0;
 }
 
+Cgraphe::Cgraphe(Cgraphe & GRAelem)
+{
+	int iBoucle;
+
+	iNbSommets = GRAelem.GRAGetNbSommets();
+
+	if (iNbSommets > 0) {
+		pSOMtab = new Csommet*[iNbSommets];
+
+		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+
+			pSOMtab[iBoucle] = new Csommet(*GRAelem.pSOMtab[iBoucle]);
+
+		}
+	}
+	else {
+		pSOMtab = nullptr;
+	}
+	
+}
+
 /**
 * @brief Destructeur de Cgraphe
 */
