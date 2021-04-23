@@ -39,11 +39,19 @@ Csommet::Csommet(int iNum)
 */
 Csommet::Csommet(Csommet & SOMsommet)
 {
-	iNumero = SOMsommet.iNumero;
-	pARCtabArrivant = SOMsommet.pARCtabArrivant;
-	pARCtabSortant = SOMsommet.pARCtabSortant;
+	int iBoucle = 0;
+	
+	iNumero = SOMsommet.iNumero;	
 	iNbrArcArrivant = SOMsommet.iNbrArcArrivant;
 	iNbrArcSortant = SOMsommet.iNbrArcSortant;
+	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		pARCtabArrivant[iBoucle] = SOMsommet.pARCtabArrivant[iBoucle];
+	}
+	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		pARCtabSortant[iBoucle] = SOMsommet.pARCtabSortant[iBoucle];
+	}	
 	idernierSommet = SOMsommet.idernierSommet;
 
 }
