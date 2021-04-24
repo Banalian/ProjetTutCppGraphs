@@ -39,16 +39,21 @@ Csommet::Csommet(int iNum)
 */
 Csommet::Csommet(Csommet & SOMsommet)
 {
-	int iBoucle = 0;
+	int iBoucle;
 	
 	iNumero = SOMsommet.iNumero;	
 	iNbrArcArrivant = SOMsommet.iNbrArcArrivant;
 	iNbrArcSortant = SOMsommet.iNbrArcSortant;
-	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+
+	pARCtabArrivant = new Carc*[iNbrArcArrivant];
+	pARCtabSortant = new Carc*[iNbrArcSortant];
+
+
+	for (iBoucle = 0; iBoucle < iNbrArcArrivant; iBoucle++)
 	{
 		pARCtabArrivant[iBoucle] = SOMsommet.pARCtabArrivant[iBoucle];
 	}
-	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle = 0; iBoucle < iNbrArcSortant; iBoucle++)
 	{
 		pARCtabSortant[iBoucle] = SOMsommet.pARCtabSortant[iBoucle];
 	}	
@@ -290,5 +295,7 @@ void Csommet::SOMInverserArcSom()
 	pARCtabArrivant = pARCtabSortant;
 
 	pARCtabSortant = pARCTemp;
+
+	pARCTemp = nullptr;
 
 }
