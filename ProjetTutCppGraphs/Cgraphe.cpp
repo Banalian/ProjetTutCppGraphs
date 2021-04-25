@@ -4,7 +4,7 @@
 /**
 * @brief Permet de connaitre la position dans le tableau d'un sommet du graph
 * @param iNumSom le numero a tester
-* @return la poisition dans le tableau, et -1 s'il n'a pas trouve
+* @return la poisition dans le tableau, et -1 s'il n'a pas trouve le sommet
 */
 int Cgraphe::GRAPlaceOfSomInTab(int iNumSom)
 {
@@ -34,6 +34,7 @@ Cgraphe::Cgraphe(Cgraphe & GRAelem)
 
 	iNbSommets = GRAelem.GRAGetNbSommets();
 
+	//si un sommet existe, il faut recreer le tableau, sinon on laisse le tableau a nullptr
 	if (iNbSommets > 0) {
 		pSOMtab = new Csommet*[iNbSommets];
 
@@ -56,6 +57,7 @@ Cgraphe::~Cgraphe()
 {
 	int iBoucle;
 
+	//pas besoin de verifier s'il y a un sommet qui existe, car on sortira directement de la boucle si iNbSommet == 0
 	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 		delete pSOMtab[iBoucle];
 	}
@@ -84,6 +86,7 @@ bool Cgraphe::GRAIsSomInTab(int iNumSom)
 {
 	int iBoucle;
 
+	//pas besoin de verifier s'il y a un sommet qui existe, car on sortira directement de la boucle si iNbSommet == 0
 	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
 			return true;
@@ -129,7 +132,7 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 	if (!GRAIsSomInTab(iNumSom)) {
 		throw Cexception(ERRSumDoesntExist);
 	}
-	int iBoucle = 0, jBoucle, iArrivant, iSortant, iArcToDelete;
+	int iBoucle = 0, jBoucle, iArrivant, iSortant, iArcToDelete, iDecalage = 0;
 
 	while(pSOMtab[iBoucle]->SOMGetSomNum() != iNumSom) {
 		iBoucle++;
@@ -145,7 +148,8 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 		iArcToDelete = pSOMtab[iBoucle]->SOMgetDestArrivant(jBoucle);
 		
 		//aller delete d'arc de dest iBoucle dans le sommet dont le numero a ete recup avant
-		pSOMtab[iArcToDelete]->SOMDeleteArcSortant(iBoucle);
+		iArcToDelete = GRAPlaceOfSomInTab(iArcToDelete);
+		pSOMtab[iArcToDelete]->SOMDeleteArcSortant(iNumSom);
 	}
 
 	for (jBoucle = 0; jBoucle < iSortant; jBoucle++) {
@@ -153,14 +157,16 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 		iArcToDelete = pSOMtab[iBoucle]->SOMgetDestSortant(jBoucle);
 
 		//aller delete d'arc de dest iBoucle dans le sommet dont le numero a ete recup avant
-		pSOMtab[iArcToDelete]->SOMDeleteArcArrivant(iBoucle);
+		iArcToDelete = GRAPlaceOfSomInTab(iArcToDelete);
+		pSOMtab[iArcToDelete]->SOMDeleteArcArrivant(iNumSom);
 	}
 
 
 
 
 	delete pSOMtab[iBoucle];
-	
+	pSOMtab[iBoucle] = nullptr;
+
 	Csommet **pSOMtabTemp;
 	iNbSommets--;
 
@@ -172,11 +178,13 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 	else {
 		pSOMtabTemp = new Csommet*[iNbSommets];
 		
+		//on pourrait penser que cette boucle va oublier 1 case, mais en realite pas de probleme, car le if permet de sauter une case pour bien atteindre toutes les cases
+		//et si la case vide est a la fin, elle ne sera juste pas testee
 		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 			if (pSOMtab[iBoucle] == nullptr) {
-				iBoucle++;
+				iDecalage++;
 			}
-			pSOMtabTemp[iBoucle] = pSOMtabTemp[iBoucle];
+			pSOMtabTemp[iBoucle] = pSOMtab[iBoucle+ iDecalage];
 		}
 		delete[] pSOMtab;
 		pSOMtab = pSOMtabTemp;
