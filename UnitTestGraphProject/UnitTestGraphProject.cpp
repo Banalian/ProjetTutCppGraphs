@@ -27,6 +27,7 @@ namespace UnitTestGraphProject
 			int iDest = 1;
 			Carc ARCtest(1);
 
+
 			Assert::AreEqual(iDest,ARCtest.ARCgetDest());
 		}
 
@@ -195,8 +196,8 @@ namespace UnitTestGraphProject
 			catch (Cexception e) {
 				Assert::Fail();
 			}
-			
 
+			
 		}
 
 	};
