@@ -104,4 +104,6 @@ public:
 	void SOMInverserArcSom();
 
 	Csommet& operator=(Csommet &sommet);
+
+	std::ostream& operator<<(std::ostream& out);
 };

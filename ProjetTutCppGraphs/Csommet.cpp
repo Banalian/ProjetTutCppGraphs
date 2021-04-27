@@ -359,4 +359,22 @@ Csommet& Csommet::operator=(Csommet& sommet)
 		pARCtabSortant[iBoucle] = sommet.pARCtabSortant[iBoucle];
 	}
 	idernierSommet = sommet.idernierSommet;
+	return *this;
+}
+
+std::ostream& Csommet::operator<<(std::ostream& out)
+{
+	int iBoucle = 0;
+	out << "Numero de sommet :" << iNumero << std::endl;
+	out << "\t Liste des arcs entrants : \n";
+	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		out << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
+	}
+	iBoucle = 0;
+	out << "\t Liste des arcs sortants : \n";
+	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	{
+		out << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
+	}
 }
