@@ -27,7 +27,7 @@ private:
 public:
 
 	/**
-	* @brief Constructeur par défaut
+	* @brief Constructeur par defaut
 	*/
 	Cgraphe();
 
@@ -93,5 +93,14 @@ public:
 	* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
 	*/
 	void GRAInverserGraph();
+
+
+	/**
+	* @brief Surcharge du = => equivalent au constructeur de recopie
+	* @param GRAelem le graph a copier
+	* @return le graph copie
+	*/
+	Cgraphe& operator=(Cgraphe& GRAelem);
+
 };
 

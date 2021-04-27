@@ -1,7 +1,7 @@
 #pragma once
 
-//cette ligne sert a désactivé les erreurs pour les commandes comme strtok()
-//car elles sont dépréciées car non thread safe par exemple, mais ici étant donné que l'on est en mono-thread pas de soucis
+//cette ligne sert a desactive les erreurs pour les commandes comme strtok()
+//car elles sont depreciees car non thread safe par exemple, mais ici etant donne que l'on est en mono-thread pas de soucis
 #pragma warning(disable : 4996)
 
 #include <fstream>
@@ -60,5 +60,9 @@
 */
 Cgraphe* GraphTextFileParser(char* pcPath);
 
-
+/**
+* @brief Fonction pour passer a la prochaine ligne non vide du fichier. Si une fin de document est trouvee, lance une exception
+* @param myFile pointeur vers un objet pour lire un fichier
+* @param line la variable dans laquelle sera stockee la ligne
+*/
 inline void getNextLine(std::fstream* myFile, char* line);

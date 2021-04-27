@@ -2,6 +2,7 @@
 class Carc
 {
 private:
+	/** variable contenant la destination de l'arc (qui n'indique pas forcement le sens de l'arc) */
 	int iDestination;
 public:
 

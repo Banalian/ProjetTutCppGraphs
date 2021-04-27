@@ -186,6 +186,12 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 	return pGRAtemp;
 }
 
+
+/**
+* @brief Fonction pour passer a la prochaine ligne non vide du fichier. Si une fin de document est trouvee, lance une exception
+* @param myFile pointeur vers un objet pour lire un fichier
+* @param line la variable dans laquelle sera stockee la ligne
+*/
 inline void getNextLine(std::fstream* myFile, char *line)
 {
 	do {

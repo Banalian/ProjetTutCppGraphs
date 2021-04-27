@@ -20,7 +20,7 @@ int Cgraphe::GRAPlaceOfSomInTab(int iNumSom)
 }
 
 /**
-* @brief Constructeur par défaut
+* @brief Constructeur par defaut
 */
 Cgraphe::Cgraphe()
 {
@@ -132,7 +132,9 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 	if (!GRAIsSomInTab(iNumSom)) {
 		throw Cexception(ERRSumDoesntExist);
 	}
+
 	int iBoucle = 0, jBoucle, iArrivant, iSortant, iArcToDelete, iDecalage = 0;
+	Csommet **pSOMtabTemp;
 
 	while(pSOMtab[iBoucle]->SOMGetSomNum() != iNumSom) {
 		iBoucle++;
@@ -166,8 +168,6 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 
 	delete pSOMtab[iBoucle];
 	pSOMtab[iBoucle] = nullptr;
-
-	Csommet **pSOMtabTemp;
 	iNbSommets--;
 
 
@@ -256,3 +256,43 @@ void Cgraphe::GRAInverserGraph()
 		pSOMtab[iBoucle]->SOMInverserArcSom();
 	}
 }
+
+
+/**
+* @brief Surcharge du = => equivalent au constructeur de recopie
+* @param GRAelem le graph a copier
+* @return le graph copie
+*/
+Cgraphe & Cgraphe::operator=(Cgraphe & GRAelem)
+{
+	int iBoucle;
+
+
+	if (pSOMtab) {
+		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+			delete pSOMtab[iBoucle];
+		}
+
+		delete[] pSOMtab;
+	}
+
+
+	iNbSommets = GRAelem.iNbSommets;
+
+	if (iNbSommets > 0) {
+
+		pSOMtab = new Csommet*[iNbSommets];
+
+		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+			pSOMtab[iBoucle] = new Csommet(*GRAelem.pSOMtab[iBoucle]);
+		}
+	}
+	else {
+		pSOMtab = nullptr;
+	}
+	
+
+	return *this;
+}
+
+
