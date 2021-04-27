@@ -30,19 +30,15 @@ int main(int argc, char*argv[])
 	try {
 		pGRAGraphFile = GraphTextFileParser(argv[1]);
 
-		pGRAGraphFile->GRAAfficherGraph();
+		std::cout << *pGRAGraphFile << std::endl;
 
 		pGRAGraphFileInverse = new Cgraphe(*pGRAGraphFile);
 		std::cout << "Inversion du graph" << std::endl;
 		
 		pGRAGraphFileInverse->GRAInverserGraph();
 
-		pGRAGraphFileInverse->GRAAfficherGraph();
-
-
-		std::cout << "test suppression Sommet 3 du graph" << std::endl;
-		pGRAGraphFile->GRADeleteSommet(8);
-		pGRAGraphFile->GRAAfficherGraph();
+		std::cout << *pGRAGraphFileInverse << std::endl;
+;
 
 	}
 	catch (Cexception e) {

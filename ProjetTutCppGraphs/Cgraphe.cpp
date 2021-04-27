@@ -257,6 +257,27 @@ void Cgraphe::GRAInverserGraph()
 	}
 }
 
+Csommet** Cgraphe::GRAgetTabSomCopy(void)
+{
+	Csommet** pSOMtabCopy;
+	int iBoucle;
+	
+	if (iNbSommets > 0) {
+		pSOMtabCopy = new Csommet*[iNbSommets];
+
+		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+			pSOMtabCopy[iBoucle] = new Csommet(*pSOMtab[iBoucle]);
+		}
+
+
+		return pSOMtabCopy;
+	}
+	else {
+		return nullptr;
+	}
+	
+}
+
 
 /**
 * @brief Surcharge du = => equivalent au constructeur de recopie
@@ -296,3 +317,19 @@ Cgraphe & Cgraphe::operator=(Cgraphe & GRAelem)
 }
 
 
+
+std::ostream & operator<<(std::ostream & out, Cgraphe & GRAelem)
+{
+	// TODO: insérer une instruction return ici
+	int iBoucle;
+	Csommet** pSOMtabTemp = GRAelem.GRAgetTabSomCopy();
+
+	if (pSOMtabTemp == nullptr) {
+		out << "Graphe Vide";
+	}
+	for (iBoucle = 0; iBoucle < GRAelem.GRAGetNbSommets(); iBoucle++) {
+		out << *pSOMtabTemp[iBoucle] << std::endl;
+	}
+
+	return out;
+}

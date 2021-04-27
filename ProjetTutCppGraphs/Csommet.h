@@ -1,4 +1,6 @@
 #pragma once
+
+#include <iostream>
 #include "Carc.h"
 #include "Cexception.h"
 #define ERRCantAddArc 401
@@ -105,5 +107,7 @@ public:
 
 	Csommet& operator=(Csommet &sommet);
 
-	std::ostream& operator<<(std::ostream& out);
+	
 };
+
+std::ostream& operator<<(std::ostream& out, Csommet& SOMelem);

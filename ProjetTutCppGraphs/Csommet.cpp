@@ -366,19 +366,24 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	return *this;
 }
 
-std::ostream& Csommet::operator<<(std::ostream& out)
+
+
+std::ostream & operator<<(std::ostream & out, Csommet & SOMelem)
 {
+
 	int iBoucle = 0;
-	out << "Numero de sommet :" << iNumero << std::endl;
+	out << "Numero de sommet :" << SOMelem.SOMGetSomNum() << std::endl;
 	out << "\t Liste des arcs entrants : \n";
-	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle; iBoucle < SOMelem.SOMGetNbArcArrivant(); iBoucle++)
 	{
-		out << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
+		out << "\t\t" << SOMelem.SOMgetDestArrivant(iBoucle) << std::endl;
 	}
 	iBoucle = 0;
 	out << "\t Liste des arcs sortants : \n";
-	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle; iBoucle < SOMelem.SOMGetNbArcSortant(); iBoucle++)
 	{
-		out << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
+		out << "\t\t" << SOMelem.SOMgetDestSortant(iBoucle) << std::endl;
 	}
+
+	return out;
 }

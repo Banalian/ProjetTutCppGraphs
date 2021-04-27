@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include "Csommet.h"
 #include "Carc.h"
 #include "Cexception.h"
@@ -94,6 +95,8 @@ public:
 	*/
 	void GRAInverserGraph();
 
+	Csommet** GRAgetTabSomCopy(void);
+
 
 	/**
 	* @brief Surcharge du = => equivalent au constructeur de recopie
@@ -102,5 +105,8 @@ public:
 	*/
 	Cgraphe& operator=(Cgraphe& GRAelem);
 
+
 };
 
+
+std::ostream& operator<<(std::ostream& out, Cgraphe& GRAelem);
