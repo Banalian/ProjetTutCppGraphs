@@ -318,12 +318,16 @@ void Csommet::SOMInverserArcSom()
 {
 
 	Carc** pARCTemp;
+	int iTemp;
 
 	pARCTemp = pARCtabArrivant;
+	iTemp = iNbrArcArrivant;
 
 	pARCtabArrivant = pARCtabSortant;
+	iNbrArcArrivant = iNbrArcSortant;
 
 	pARCtabSortant = pARCTemp;
+	iNbrArcSortant = iTemp;
 
 	pARCTemp = nullptr;
 
