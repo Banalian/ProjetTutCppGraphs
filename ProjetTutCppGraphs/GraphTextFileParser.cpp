@@ -145,7 +145,7 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			switch (iCodeErr)
 			{
 			case ERREmptyFile:
-				std::cout << "Erreur : Fichier Vide" << std::endl;
+				std::cout << "Erreur : Fichier Vide ou fin de fichier atteint trop tot" << std::endl;
 				break;
 			case ERRBadFormatLineGraph:
 				std::cout << "Erreur : Format du fichier nom respecte (verifiez la convention d'ecriture du fichier" << std::endl;

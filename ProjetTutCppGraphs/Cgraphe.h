@@ -11,7 +11,7 @@
 class Cgraphe
 {
 private:
-	/*Tableau de Sommet de tout le graphe.*/
+	/*Tableau de tout les sommets du graphe.*/
 	Csommet **pSOMtab;
 
 	/*Nombre de sommets contenu dans le graph */
@@ -20,7 +20,7 @@ private:
 	/**
 	* @brief Permet de connaitre la position dans le tableau d'un sommet du graph
 	* @param iNumSom le numero a tester
-	* @return la poisition dans le tableau, et -1 s'il n'a pas trouve
+	* @return la poisition dans le tableau, et -1 s'il n'a pas trouve le sommet
 	*/
 	int GRAPlaceOfSomInTab(int iNumSom);
 

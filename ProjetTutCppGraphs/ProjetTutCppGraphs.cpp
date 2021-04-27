@@ -39,13 +39,27 @@ int main(int argc, char*argv[])
 
 		pGRAGraphFileInverse->GRAAfficherGraph();
 
+
+		std::cout << "test suppression Sommet 3 du graph" << std::endl;
+		pGRAGraphFile->GRADeleteSommet(8);
+		pGRAGraphFile->GRAAfficherGraph();
+
 	}
 	catch (Cexception e) {
 		int iCodeErr = e.EXCLire_Code();
 		switch (iCodeErr)
 		{
+		case ERRFileNotOpen:
+			std::cout << "Erreur : Le fichier n'a pas pu etre ouvert " << std::endl;
+			break;
 		case ERRBadFormatFileGraph:
-			std::cout << "Erreur : Le fichier n'avait pas un format correct ou " << std::endl;
+			std::cout << "Erreur : Le fichier n'avait pas un format correct" << std::endl;
+			break;
+		case ERRSumAlreadyExist:
+			std::cout << "Erreur : Le sommet qui devait etre ajoute existe deja " << std::endl;
+			break;
+		case ERRSumDoesntExist:
+			std::cout << "Erreur : Un sommet non existant a essaye d'etre supprime " << std::endl;
 			break;
 		default:
 			std::cout << "Erreur non repertoriee" << std::endl;
@@ -53,6 +67,7 @@ int main(int argc, char*argv[])
 		}
 
 	}
+
 	
 
 }
