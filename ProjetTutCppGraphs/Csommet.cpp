@@ -42,7 +42,7 @@ Csommet::Csommet(Csommet & SOMsommet)
 {
 	int iBoucle;
 	
-	iNumero = SOMsommet.iNumero;	
+	iNumero = SOMsommet.iNumero;
 	iNbrArcArrivant = SOMsommet.iNbrArcArrivant;
 	iNbrArcSortant = SOMsommet.iNbrArcSortant;
 
@@ -327,4 +327,36 @@ void Csommet::SOMInverserArcSom()
 
 	pARCTemp = nullptr;
 
+}
+
+Csommet& Csommet::operator=(Csommet& sommet)
+{
+	int iBoucle = 0;
+	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		delete pARCtabArrivant[iBoucle];
+	}
+
+	iBoucle = 0;
+
+	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	{
+		delete pARCtabSortant[iBoucle];
+	}
+
+	iBoucle = 0;
+
+	iNumero = sommet.iNumero;
+	iNbrArcArrivant = sommet.iNbrArcArrivant;
+	iNbrArcSortant = sommet.iNbrArcSortant;
+
+	for (iBoucle = 0; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		pARCtabArrivant[iBoucle] = sommet.pARCtabArrivant[iBoucle];
+	}
+	for (iBoucle = 0; iBoucle < iNbrArcSortant; iBoucle++)
+	{
+		pARCtabSortant[iBoucle] = sommet.pARCtabSortant[iBoucle];
+	}
+	idernierSommet = sommet.idernierSommet;
 }

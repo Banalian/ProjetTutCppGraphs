@@ -103,4 +103,5 @@ public:
 	*/
 	void SOMInverserArcSom();
 
+	Csommet& operator=(Csommet &sommet);
 };
