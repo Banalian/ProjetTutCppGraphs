@@ -1,9 +1,10 @@
 #include "Csommet.h"
 #include <iostream>
+
 int Csommet::idernierSommet = 0;
 
 /**
- * @brief Constructeur par défaut
+ * @brief Constructeur par defaut
  */
 Csommet::Csommet()
 {
@@ -35,7 +36,7 @@ Csommet::Csommet(int iNum)
 
 /**
 * @brief Constructeur de recopie
-* @param Le sommet à recopier
+* @param Le sommet a recopier
 */
 Csommet::Csommet(Csommet & SOMsommet)
 {
@@ -62,7 +63,7 @@ Csommet::Csommet(Csommet & SOMsommet)
 }
 
 /**
- * @brief Destructeur par défaut
+ * @brief Destructeur par defaut
  */
 Csommet::~Csommet()
 {
@@ -88,10 +89,15 @@ Csommet::~Csommet()
  */
 void Csommet::SOMAddArcArrivant(int iDest)
 {
+	if (iDest == iNumero)
+	{
+		throw Cexception(ERRCantAddArc);
+	}
+
 	int iBoucle = 0;
 
 	Carc** pArctabTemp = new Carc*[iNbrArcArrivant+1];
-	for (iBoucle; iBoucle < (iNbrArcArrivant); iBoucle++) // On recopie dans case à case dans un tableau temporaire de taille +1
+	for (iBoucle; iBoucle < (iNbrArcArrivant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
 	{
 		pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle];
 	}
@@ -110,10 +116,15 @@ void Csommet::SOMAddArcArrivant(int iDest)
  */
 void Csommet::SOMAddArcSortant(int iDest)
 {
+	if (iDest == iNumero)
+	{
+		throw Cexception(ERRCantAddArc);
+	}
+
 	int iBoucle = 0;
 
 	Carc** pArctabTemp = new Carc*[iNbrArcSortant + 1];
-	for (iBoucle; iBoucle < (iNbrArcSortant); iBoucle++) // On recopie dans case à case dans un tableau temporaire de taille +1
+	for (iBoucle; iBoucle < (iNbrArcSortant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
 	{
 		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle];
 	}
@@ -131,10 +142,15 @@ void Csommet::SOMAddArcSortant(int iDest)
  */
 void Csommet::SOMDeleteArcArrivant(int iDest)
 {
+	if (iNbrArcArrivant == 0)
+	{
+		throw Cexception(ERRNoMoreArc);
+	}
+
 	int iBoucle = 0;
 	int iDecalage = 0;
 
-	while(pARCtabArrivant[iBoucle]->ARCgetDest() != iDest)	//On parcourt la liste des arcs jusqu'à tomber sur celui à supprimer
+	while(pARCtabArrivant[iBoucle]->ARCgetDest() != iDest)	//On parcourt la liste des arcs jusqu'a tomber sur celui a supprimer
 	{
 		iBoucle++;
 	}
@@ -171,10 +187,15 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
  */
 void Csommet::SOMDeleteArcSortant(int iDest)
 {
+	if (iNbrArcSortant == 0)
+	{
+		throw Cexception(ERRNoMoreArc);
+	}
+
 	int iBoucle = 0;
 	int iDecalage = 0;
 
-	while (pARCtabSortant[iBoucle]->ARCgetDest() != iDest)	//On parcourt la liste des arcs jusqu'à tomber sur celui à supprimer
+	while (pARCtabSortant[iBoucle]->ARCgetDest() != iDest)	//On parcourt la liste des arcs jusqu'a tomber sur celui a supprimer
 	{
 		iBoucle++;
 	}
@@ -208,7 +229,7 @@ void Csommet::SOMDeleteArcSortant(int iDest)
 
 /**
  * @brief Affiche le numero du sommet
- * @return Le numéro du sommet
+ * @return Le numero du sommet
  */
 int Csommet::SOMGetSomNum()
 {
@@ -216,7 +237,7 @@ int Csommet::SOMGetSomNum()
 }
 
 /**
-* @brief Donne le nobre d'arcs arrivants
+* @brief Donne le nombre d'arcs arrivants
 */
 int Csommet::SOMGetNbArcArrivant()
 {
@@ -224,7 +245,7 @@ int Csommet::SOMGetNbArcArrivant()
 }
 
 /**
-* @brief Donne le nobre d'arcs sortants
+* @brief Donne le nombre d'arcs sortants
 */
 int Csommet::SOMGetNbArcSortant()
 {
@@ -262,22 +283,30 @@ void Csommet::SOMAfficherSommet()
 }
 
 /**
- * @brief Renvoie la destination de l'arc arrivant à la position iPos
+ * @brief Renvoie la destination de l'arc arrivant a la position iPos
  * @param position iPos
  * @return destination iDest
  */
 int Csommet::SOMgetDestArrivant(int iPos)
 {
+	if (iPos >= iNbrArcArrivant)
+	{
+		throw Cexception(ERRPosOutOfRange);
+	}
 	return pARCtabArrivant[iPos]->ARCgetDest();
 }
 
 /**
- * @brief Renvoie la destination de l'arc sortant à la position iPos
+ * @brief Renvoie la destination de l'arc sortant a la position iPos
  * @param position iPos
  * @return destination iDest
  */
 int Csommet::SOMgetDestSortant(int iPos)
 {
+	if (iPos >= iNbrArcSortant)
+	{
+		throw Cexception(ERRPosOutOfRange);
+	}
 	return pARCtabSortant[iPos]->ARCgetDest();
 }
 
