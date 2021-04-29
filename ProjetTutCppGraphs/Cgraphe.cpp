@@ -203,7 +203,7 @@ void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee)
 	int iPosSomDepart = GRAPlaceOfSomInTab(iNumSommetDepart);
 	int iPosSomArrivee = GRAPlaceOfSomInTab(iNumSommetArrivee);
 
-	if (iPosSomArrivee == -1 || iPosSomArrivee == -1) {
+	if (iPosSomDepart == -1 || iPosSomArrivee == -1) {
 		throw Cexception(ERRSumDoesntExist);
 	}
 
@@ -221,7 +221,7 @@ void Cgraphe::GRADeleteArc(int iNumSommetDepart, int iNumSommetArrivee)
 	int iPosSomDepart = GRAPlaceOfSomInTab(iNumSommetDepart);
 	int iPosSomArrivee = GRAPlaceOfSomInTab(iNumSommetArrivee);
 
-	if ( iPosSomArrivee == -1 || iPosSomArrivee == -1 ) {
+	if (iPosSomDepart == -1 || iPosSomArrivee == -1 ) {
 		throw Cexception(ERRSumDoesntExist);
 	}
 

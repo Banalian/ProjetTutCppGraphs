@@ -197,7 +197,75 @@ namespace UnitTestGraphProject
 				Assert::Fail();
 			}
 
-			
+			try {
+				GRAtest.GRAAddArc(1, 3);
+				Assert::Fail();
+			}
+			catch (Cexception e) {
+
+			}
+
+			try {
+				GRAtest.GRAAddArc(3, 1);
+				Assert::Fail();
+			}
+			catch (Cexception e) {
+
+			}
+
+			try {
+				GRAtest.GRAAddArc(1, 2);
+				Assert::Fail();
+			}
+			catch (Cexception e) {
+
+			}
+
+
+		}
+
+		TEST_METHOD(TestClassDeleteArc)
+		{
+			Cgraphe GRAtest;
+
+			try {
+				GRAtest.GRAAddSommet(1);
+				GRAtest.GRAAddSommet(2);
+				GRAtest.GRAAddArc(1, 2);
+				GRAtest.GRADeleteArc(1, 2);
+
+
+			}
+			catch (Cexception e) {
+				Assert::Fail();
+			}
+
+
+			try {
+				GRAtest.GRADeleteArc(1, 3);
+				Assert::Fail();
+			}
+			catch (Cexception e) {
+
+			}
+
+			try {
+				GRAtest.GRADeleteArc(3, 1);
+				Assert::Fail();
+			}
+			catch (Cexception e) {
+
+			}
+
+			try {
+				GRAtest.GRADeleteArc(1, 2);
+				Assert::Fail();
+			}
+			catch (Cexception e) {
+
+			}
+
+
 		}
 
 	};
