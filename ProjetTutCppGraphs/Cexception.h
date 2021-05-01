@@ -1,4 +1,6 @@
 #pragma once
+
+#define ErrNewMallocFailed 100
 class Cexception
 {
 private:

@@ -37,10 +37,16 @@ Cgraphe::Cgraphe(Cgraphe & GRAelem)
 	//si un sommet existe, il faut recreer le tableau, sinon on laisse le tableau a nullptr
 	if (iNbSommets > 0) {
 		pSOMtab = new Csommet*[iNbSommets];
+		if (pSOMtab == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 
 		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 
 			pSOMtab[iBoucle] = new Csommet(*GRAelem.pSOMtab[iBoucle]);
+			if (pSOMtab[iBoucle] == nullptr) {
+				throw Cexception(ErrNewMallocFailed);
+			}
 
 		}
 	}
@@ -109,12 +115,19 @@ void Cgraphe::GRAAddSommet(int iNum)
 	iNbSommets++;
 
 	Csommet **pSOMtabTemp = new Csommet*[iNbSommets];
+	if (pSOMtabTemp == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+
 	int iBoucle;
 	for (iBoucle = 0; iBoucle < (iNbSommets - 1); iBoucle++) {
 		pSOMtabTemp[iBoucle] = pSOMtab[iBoucle];
 	}
 
 	pSOMtabTemp[iBoucle] = new Csommet(iNum);
+	if (pSOMtabTemp[iBoucle] == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 
 	delete[] pSOMtab;
 	pSOMtab = pSOMtabTemp;
@@ -177,6 +190,9 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 	}
 	else {
 		pSOMtabTemp = new Csommet*[iNbSommets];
+		if (pSOMtabTemp == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 		
 		//on pourrait penser que cette boucle va oublier 1 case, mais en realite pas de probleme, car le if permet de sauter une case pour bien atteindre toutes les cases
 		//et si la case vide est a la fin, elle ne sera juste pas testee
@@ -264,9 +280,15 @@ Csommet** Cgraphe::GRAgetTabSomCopy(void)
 	
 	if (iNbSommets > 0) {
 		pSOMtabCopy = new Csommet*[iNbSommets];
+		if (pSOMtabCopy == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 
 		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 			pSOMtabCopy[iBoucle] = new Csommet(*pSOMtab[iBoucle]);
+			if (pSOMtabCopy[iBoucle] == nullptr) {
+				throw Cexception(ErrNewMallocFailed);
+			}
 		}
 
 
@@ -303,9 +325,15 @@ Cgraphe & Cgraphe::operator=(Cgraphe & GRAelem)
 	if (iNbSommets > 0) {
 
 		pSOMtab = new Csommet*[iNbSommets];
+		if (pSOMtab == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 
 		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
 			pSOMtab[iBoucle] = new Csommet(*GRAelem.pSOMtab[iBoucle]);
+			if (pSOMtab[iBoucle] == nullptr) {
+				throw Cexception(ErrNewMallocFailed);
+			}
 		}
 	}
 	else {

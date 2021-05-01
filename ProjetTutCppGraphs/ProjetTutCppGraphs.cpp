@@ -33,6 +33,9 @@ int main(int argc, char*argv[])
 		std::cout << *pGRAGraphFile << std::endl;
 
 		pGRAGraphFileInverse = new Cgraphe(*pGRAGraphFile);
+		if (pGRAGraphFile == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 		std::cout << "Inversion du graph" << std::endl;
 		
 		pGRAGraphFileInverse->GRAInverserGraph();
@@ -50,6 +53,9 @@ int main(int argc, char*argv[])
 			break;
 		case ERRBadFormatFileGraph:
 			std::cout << "Erreur : Le fichier n'avait pas un format correct" << std::endl;
+			break;
+		case ErrNewMallocFailed:
+			std::cout << "Erreur : Une operation malloc ou new a echouee, arret du programme" << std::endl;
 			break;
 		case ERRSumAlreadyExist:
 			std::cout << "Erreur : Le sommet qui devait etre ajoute existe deja " << std::endl;

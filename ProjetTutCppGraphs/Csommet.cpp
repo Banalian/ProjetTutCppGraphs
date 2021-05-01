@@ -47,7 +47,14 @@ Csommet::Csommet(Csommet & SOMsommet)
 	iNbrArcSortant = SOMsommet.iNbrArcSortant;
 
 	pARCtabArrivant = new Carc*[iNbrArcArrivant];
+	if (pARCtabArrivant == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 	pARCtabSortant = new Carc*[iNbrArcSortant];
+	if (pARCtabSortant == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+
 
 
 	for (iBoucle = 0; iBoucle < iNbrArcArrivant; iBoucle++)
@@ -97,6 +104,11 @@ void Csommet::SOMAddArcArrivant(int iDest)
 	int iBoucle = 0;
 
 	Carc** pArctabTemp = new Carc*[iNbrArcArrivant+1];
+
+	if (pArctabTemp == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+
 	for (iBoucle; iBoucle < (iNbrArcArrivant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
 	{
 		pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle];
@@ -124,12 +136,20 @@ void Csommet::SOMAddArcSortant(int iDest)
 	int iBoucle = 0;
 
 	Carc** pArctabTemp = new Carc*[iNbrArcSortant + 1];
+	if (pArctabTemp == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+
+
 	for (iBoucle; iBoucle < (iNbrArcSortant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
 	{
 		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle];
 	}
 
 	pArctabTemp[iNbrArcSortant] = new Carc(iDest);
+	if (pArctabTemp[iNbrArcSortant] == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 	delete[] pARCtabSortant;
 	pARCtabSortant = pArctabTemp;
 
@@ -161,6 +181,10 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
 	if (iNbrArcArrivant != 0)
 	{
 		Carc** pArctabTemp = new Carc*[iNbrArcArrivant];
+		if (pArctabTemp == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
+
 		iBoucle = 0;
 		for (iBoucle; iBoucle <= iNbrArcArrivant; iBoucle++)	//On recopie la liste en supprimant la case vide
 		{
@@ -206,6 +230,10 @@ void Csommet::SOMDeleteArcSortant(int iDest)
 	if (iNbrArcSortant != 0)
 	{
 		Carc** pArctabTemp = new Carc*[iNbrArcSortant];
+		if (pArctabTemp == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
+
 		iBoucle = 0;
 		for (iBoucle; iBoucle <= iNbrArcSortant; iBoucle++)	//On recopie la liste en supprimant la case vide
 		{

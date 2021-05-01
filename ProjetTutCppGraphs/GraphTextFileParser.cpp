@@ -82,6 +82,9 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			}
 
 			pGRAtemp = new Cgraphe();
+			if (pGRAtemp == nullptr) {
+				throw Cexception(ErrNewMallocFailed);
+			}
 				
 			for (iBoucle = 0; iBoucle < nbSommets; iBoucle++) {
 				getNextLine(&myFile, line);
@@ -162,6 +165,17 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			case ERRSumDoesntExist:
 				std::cout << "Erreur : un des sommets nomme dans un arc n'existe pas et n'a pas ete nomme dans le fichier" << std::endl;
 				break;
+			case ErrNewMallocFailed:
+				if (line) {
+					delete line;
+				}
+				myFile.close();
+				if (pGRAtemp) {
+					delete pGRAtemp;
+				}
+				throw Cexception(ErrNewMallocFailed);
+				break;
+
 			default:
 				std::cout << "Erreur non repertoriee" << std::endl;
 				break;
