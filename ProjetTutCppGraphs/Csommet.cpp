@@ -115,6 +115,10 @@ void Csommet::SOMAddArcArrivant(int iDest)
 	}
 
 	pArctabTemp[iNbrArcArrivant] = new Carc(iDest);
+	if (pArctabTemp[iNbrArcArrivant] == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+
 	delete[] pARCtabArrivant;
 	pARCtabArrivant = pArctabTemp;
 

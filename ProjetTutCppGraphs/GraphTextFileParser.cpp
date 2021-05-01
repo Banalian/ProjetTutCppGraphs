@@ -48,6 +48,9 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 	Cgraphe *pGRAtemp = nullptr;
 
 	line = new char[BUFFSIZE];
+	if (line == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 
 	if (myFile.is_open()) {
 
