@@ -63,7 +63,7 @@ public:
 	void GRAAddSommet(int iNum);
 
 	/**
-	* @brief Permet de supprimer un Sommet dans le graphe, ainsi que tout ses arcs (et les arcs dans les sommets relies a celui-ci)
+	* @brief Permet de supprimer un Sommet dans le graphe, ainsi que tous ses arcs (et les arcs dans les sommets relies a celui-ci)
 	* @param iNumSom Le numero du sommet a supprimer;
 	*/
 	void GRADeleteSommet(int iNumSom);
@@ -85,16 +85,18 @@ public:
 
 
 	/**
-	* @brief Affichage du graph oriente, en affichant tout les sommets existants, ainsi que les arcs sortant de ce sommet
-	* afin d'eviter une redondance en affichant les arcs entrant egalement
+	* @brief Affichage du graph oriente, en affichant tous les sommets existants, ainsi que les arcs entrants et sortants de ce sommet
 	*/
 	void GRAAfficherGraph();
 
 	/**
-	* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
+	* @brief Fonction afin d'inverser tout les arcs du graphs, entre tous les sommets
 	*/
 	void GRAInverserGraph();
 
+	/**
+	* @brief Permet de récuperer une Copie du tableau des sommets
+	*/
 	Csommet** GRAgetTabSomCopy(void);
 
 
@@ -109,4 +111,10 @@ public:
 };
 
 
+/**
+* @brief surcharge du flux de sortie pour un affichage simplifie de la structure
+* @param out le flux
+* @param GRAelem le sommet a afficher
+* @return le flux de sortie contenant le sommet
+*/
 std::ostream& operator<<(std::ostream& out, Cgraphe& GRAelem);

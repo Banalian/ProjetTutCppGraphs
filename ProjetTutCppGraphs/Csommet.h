@@ -111,7 +111,7 @@ public:
 };
 
 /**
-* @brief surchage du flux de sortie pour un affichage simplifie de la structure
+* @brief surcharge du flux de sortie pour un affichage simplifie de la structure
 * @param out le flux
 * @param SOMelem le sommet a afficher
 * @return le flux de sortie contenant le sommet
