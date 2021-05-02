@@ -103,6 +103,16 @@ void Csommet::SOMAddArcArrivant(int iDest)
 
 	int iBoucle = 0;
 
+	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	{
+		if (pARCtabArrivant[iBoucle]->ARCgetDest() == iDest)
+		{
+			throw Cexception(ERRArcAlreadyExists);
+		}
+	}
+
+	iBoucle = 0;
+
 	Carc** pArctabTemp = new Carc*[iNbrArcArrivant+1];
 
 	if (pArctabTemp == nullptr) {
@@ -138,6 +148,16 @@ void Csommet::SOMAddArcSortant(int iDest)
 	}
 
 	int iBoucle = 0;
+
+	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	{
+		if (pARCtabSortant[iBoucle]->ARCgetDest() == iDest)
+		{
+			throw Cexception(ERRArcAlreadyExists);
+		}
+	}
+
+	iBoucle = 0;
 
 	Carc** pArctabTemp = new Carc*[iNbrArcSortant + 1];
 	if (pArctabTemp == nullptr) {

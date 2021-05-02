@@ -6,6 +6,7 @@
 #define ERRCantAddArc 401
 #define ERRNoMoreArc 402
 #define ERRPosOutOfRange 403
+#define ERRArcAlreadyExists 404
 
 class Csommet
 {
