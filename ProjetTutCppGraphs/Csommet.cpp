@@ -379,6 +379,8 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	{
 		delete pARCtabSortant[iBoucle];
 	}
+	delete[] pARCtabArrivant;
+	delete[] pARCtabSortant;
 
 	iBoucle = 0;
 
@@ -386,18 +388,21 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	iNbrArcArrivant = sommet.iNbrArcArrivant;
 	iNbrArcSortant = sommet.iNbrArcSortant;
 
+	pARCtabArrivant = new Carc*[iNbrArcArrivant];
+	pARCtabSortant = new Carc*[iNbrArcSortant];
+
 	for (iBoucle = 0; iBoucle < iNbrArcArrivant; iBoucle++)
 	{
-		pARCtabArrivant[iBoucle] = sommet.pARCtabArrivant[iBoucle];
+		pARCtabArrivant[iBoucle] = new Carc(*sommet.pARCtabArrivant[iBoucle]);
 	}
 	for (iBoucle = 0; iBoucle < iNbrArcSortant; iBoucle++)
 	{
-		pARCtabSortant[iBoucle] = sommet.pARCtabSortant[iBoucle];
+		pARCtabSortant[iBoucle] = new Carc(*sommet.pARCtabSortant[iBoucle]);
 	}
 	idernierSommet = sommet.idernierSommet;
+
 	return *this;
 }
-
 
 
 std::ostream & operator<<(std::ostream & out, Csommet & SOMelem)
