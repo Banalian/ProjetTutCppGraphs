@@ -28,12 +28,12 @@ public:
 	Csommet();
 	/**
 	* @brief Constructeur de confort
-	* @param Le numero a attribuer au sommet
+	* @param iNum Le numero a attribuer au sommet
 	*/
 	Csommet(int iNum);
 	/**
 	* @brief Constructeur de recopie
-	* @param Le sommet a recopier
+	* @param SOMsommet Le sommet a recopier
 	*/
 	Csommet(Csommet & SOMsommet);
 	/**
@@ -43,23 +43,23 @@ public:
 
 	/**
 	 * @brief Ajoute un arc arrivant
-	 * @param Numero du sommet a relier
+	 * @param iDest Numero du sommet a relier
 	 */
 	void SOMAddArcArrivant(int iDest);
 	/**
 	 * @brief Ajoute un arc sortant
-	 * @param Numero du sommet a relier
+	 * @param iDest Numero du sommet a relier
 	 */
 	void SOMAddArcSortant(int iDest);
 
 	/**
 	 * @brief Supprime un arc arrivant
-	 * @param Numero du sommet a delier
+	 * @param iDest Numero du sommet a delier
 	 */
 	void SOMDeleteArcArrivant(int iDest);
 	/**
 	 * @brief Supprime un arc sortant
-	 * @param Numero du sommet a delier
+	 * @param iDest Numero du sommet a delier
 	 */
 	void SOMDeleteArcSortant(int iDest);
 
@@ -88,13 +88,13 @@ public:
 	void SOMAfficherSommet();
 	/**
 	 * @brief Renvoie la destination de l'arc arrivant a la position iPos
-	 * @param position iPos
+	 * @param iPos position iPos
 	 * @return destination iDest
 	 */
 	int SOMgetDestArrivant(int iPos);
 	/**
 	 * @brief Renvoie la destination de l'arc sortant a la position iPos
-	 * @param position iPos
+	 * @param iPos position iPos
 	 * @return destination iDest
 	 */
 	int SOMgetDestSortant(int iPos);
@@ -110,4 +110,10 @@ public:
 	
 };
 
+/**
+* @brief surchage du flux de sortie pour un affichage simplifie de la structure
+* @param out le flux
+* @param SOMelem le sommet a afficher
+* @return le flux de sortie contenant le sommet
+*/
 std::ostream& operator<<(std::ostream& out, Csommet& SOMelem);
