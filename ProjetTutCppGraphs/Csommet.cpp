@@ -308,7 +308,7 @@ int Csommet::SOMGetNbArcSortant()
  * @brief Affiche le numero du dernier sommet cree
  * @return Le numero du dernier sommet cree
  */
-int Csommet::SOMGetdernierSommet()
+int Csommet::SOMGetDernierSommet()
 {
 	return iDernietSommet;
 }

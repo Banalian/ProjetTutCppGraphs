@@ -73,20 +73,22 @@ public:
 	int SOMGetSomNum();
 	/**
 	* @brief Donne le nombre d'arcs arrivants
+	* @return le nombre d'arcs arrivant du sommet
 	*/
 	int SOMGetNbArcArrivant();
 	/**
 	* @brief Donne le nombre d'arcs sortants
+	* @return le nombre d'arcs sortant du sommet
 	*/
 	int SOMGetNbArcSortant();
 	/**
 	 * @brief Affiche le numero du dernier sommet cree
 	 * @return Le numero du dernier sommet cree
 	 */
-	int SOMGetdernierSommet();
+	int SOMGetDernierSommet();
 	/**
 	 * @brief Affiche toutes les informations du sommet
-	 * @return Numero du sommet, liste des arcs entrants et liste des arcs sortants
+	 * renvoie le numero du sommet, liste des arcs entrants et liste des arcs sortants
 	 */
 	void SOMAfficherSommet();
 	/**
@@ -108,6 +110,10 @@ public:
 	*/
 	void SOMInverserArcSom();
 
+	/**
+	* @brief Surcharge de l'opérateur egal
+	* @param sommet le sommet a utiliser pour l'operation
+	*/
 	Csommet& operator=(Csommet &sommet);
 
 	
