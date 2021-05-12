@@ -16,10 +16,12 @@ private:
 	Carc** pARCtabArrivant;
 	Carc** pARCtabSortant;
 
-	//Attributs de confort : ne servent qu'au confort de codage
+	/** Attributs de confort : ne servent qu'au confort de codage*/
 	int iNbrArcArrivant;
 	int iNbrArcSortant;
-	static int idernierSommet; //Garde en memoire le numero du dernier sommet cree
+
+	/**  Garde en memoire le numero du dernier sommet cree*/
+	static int iDernietSommet; 
 
 public:
 

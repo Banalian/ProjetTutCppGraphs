@@ -1,15 +1,15 @@
 #include "Csommet.h"
 #include <iostream>
 
-int Csommet::idernierSommet = 0;
+int Csommet::iDernietSommet = 0;
 
 /**
  * @brief Constructeur par defaut
  */
 Csommet::Csommet()
 {
-	iNumero = idernierSommet + 1;
-	idernierSommet += 1;
+	iNumero = iDernietSommet + 1;
+	iDernietSommet += 1;
 
 	iNbrArcArrivant = 0;
 	iNbrArcSortant = 0;
@@ -25,7 +25,7 @@ Csommet::Csommet()
 Csommet::Csommet(int iNum)
 {
 	iNumero = iNum;
-	idernierSommet = iNum;
+	iDernietSommet = iNum;
 
 	iNbrArcArrivant = 0;
 	iNbrArcSortant = 0;
@@ -65,7 +65,7 @@ Csommet::Csommet(Csommet & SOMsommet)
 	{
 		pARCtabSortant[iBoucle] = SOMsommet.pARCtabSortant[iBoucle];
 	}	
-	idernierSommet = SOMsommet.idernierSommet;
+	iDernietSommet = SOMsommet.iDernietSommet;
 
 }
 
@@ -310,7 +310,7 @@ int Csommet::SOMGetNbArcSortant()
  */
 int Csommet::SOMGetdernierSommet()
 {
-	return idernierSommet;
+	return iDernietSommet;
 }
 
 /**
@@ -419,7 +419,7 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	{
 		pARCtabSortant[iBoucle] = new Carc(*sommet.pARCtabSortant[iBoucle]);
 	}
-	idernierSommet = sommet.idernierSommet;
+	iDernietSommet = sommet.iDernietSommet;
 
 	return *this;
 }
