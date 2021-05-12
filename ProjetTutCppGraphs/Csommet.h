@@ -93,19 +93,19 @@ public:
 	void SOMAfficherSommet();
 	/**
 	 * @brief Renvoie la destination de l'arc arrivant a la position iPos
-	 * @param iPos position iPos
+	 * @param iPos position iPos dans le tableau
 	 * @return destination iDest
 	 */
 	int SOMgetDestArrivant(int iPos);
 	/**
 	 * @brief Renvoie la destination de l'arc sortant a la position iPos
-	 * @param iPos position iPos
+	 * @param iPos position iPos dans le tableau
 	 * @return destination iDest
 	 */
 	int SOMgetDestSortant(int iPos);
 
 	/**
-	* @brief Permet d'inverser tout les arcs du sommet.
+	* @brief Permet d'inverser tous les arcs du sommet.
 	* Une simple inversion entre A et B permet d'atteindre cela.
 	*/
 	void SOMInverserArcSom();
