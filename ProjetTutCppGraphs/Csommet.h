@@ -7,6 +7,7 @@
 #define ERRNoMoreArc 402
 #define ERRPosOutOfRange 403
 #define ERRArcAlreadyExists 404
+#define ERRSomAsSameNumAsLastSum 405
 
 class Csommet
 {
