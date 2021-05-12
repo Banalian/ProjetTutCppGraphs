@@ -22,7 +22,7 @@ private:
 	int iNbrArcSortant;
 
 	/**  Garde en memoire le numero du dernier sommet cree*/
-	static int iDernietSommet; 
+	static int iDernierSommet; 
 
 public:
 

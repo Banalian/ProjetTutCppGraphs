@@ -1,15 +1,15 @@
 #include "Csommet.h"
 #include <iostream>
 
-int Csommet::iDernietSommet = 0;
+int Csommet::iDernerSommet = 0;
 
 /**
  * @brief Constructeur par defaut
  */
 Csommet::Csommet()
 {
-	iNumero = iDernietSommet + 1;
-	iDernietSommet += 1;
+	iNumero = iDernerSommet + 1;
+	iDernerSommet += 1;
 
 	iNbrArcArrivant = 0;
 	iNbrArcSortant = 0;
@@ -25,10 +25,10 @@ Csommet::Csommet()
 Csommet::Csommet(int iNum)
 {
 	iNumero = iNum;
-	if (iNum == iDernietSommet) {
+	if (iNum == iDernerSommet) {
 		throw Cexception(ERRSomAsSameNumAsLastSum);
 	}
-	iDernietSommet = iNum;
+	iDernerSommet = iNum;
 
 	iNbrArcArrivant = 0;
 	iNbrArcSortant = 0;
@@ -68,7 +68,7 @@ Csommet::Csommet(Csommet & SOMsommet)
 	{
 		pARCtabSortant[iBoucle] = SOMsommet.pARCtabSortant[iBoucle];
 	}	
-	iDernietSommet = SOMsommet.iDernietSommet;
+	iDernerSommet = SOMsommet.iDernerSommet;
 
 }
 
@@ -313,7 +313,7 @@ int Csommet::SOMGetNbArcSortant()
  */
 int Csommet::SOMGetDernierSommet()
 {
-	return iDernietSommet;
+	return iDernerSommet;
 }
 
 /**
@@ -344,7 +344,7 @@ void Csommet::SOMAfficherSommet()
  */
 int Csommet::SOMgetDestArrivant(int iPos)
 {
-	if (iPos >= iNbrArcArrivant)
+	if (iPos >= iNbrArcArrivant || iPos < 0)
 	{
 		throw Cexception(ERRPosOutOfRange);
 	}
@@ -358,7 +358,7 @@ int Csommet::SOMgetDestArrivant(int iPos)
  */
 int Csommet::SOMgetDestSortant(int iPos)
 {
-	if (iPos >= iNbrArcSortant)
+	if (iPos >= iNbrArcSortant || iPos < 0)
 	{
 		throw Cexception(ERRPosOutOfRange);
 	}
@@ -426,7 +426,7 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	{
 		pARCtabSortant[iBoucle] = new Carc(*sommet.pARCtabSortant[iBoucle]);
 	}
-	iDernietSommet = sommet.iDernietSommet;
+	iDernerSommet = sommet.iDernerSommet;
 
 	return *this;
 }

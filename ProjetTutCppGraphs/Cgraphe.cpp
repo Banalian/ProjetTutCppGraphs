@@ -234,6 +234,7 @@ void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee)
 */
 void Cgraphe::GRADeleteArc(int iNumSommetDepart, int iNumSommetArrivee)
 {
+	//On verifie d'abord que les 2 sommets existent
 	int iPosSomDepart = GRAPlaceOfSomInTab(iNumSommetDepart);
 	int iPosSomArrivee = GRAPlaceOfSomInTab(iNumSommetArrivee);
 
@@ -241,6 +242,7 @@ void Cgraphe::GRADeleteArc(int iNumSommetDepart, int iNumSommetArrivee)
 		throw Cexception(ERRSumDoesntExist);
 	}
 
+	//puis on supprime l'arc des deux cotes
 	pSOMtab[iPosSomDepart]->SOMDeleteArcSortant(iNumSommetArrivee);
 	pSOMtab[iPosSomArrivee]->SOMDeleteArcArrivant(iNumSommetDepart);
 
@@ -345,11 +347,16 @@ Cgraphe & Cgraphe::operator=(Cgraphe & GRAelem)
 }
 
 
-
+/**
+* @brief surcharge du flux de sortie pour un affichage simplifie de la structure
+* @param out le flux
+* @param GRAelem le sommet a afficher
+* @return le flux de sortie contenant le sommet
+*/
 std::ostream & operator<<(std::ostream & out, Cgraphe & GRAelem)
 {
-	// TODO: insérer une instruction return ici
 	int iBoucle;
+	//la fonction étant en dehors de la classe, il faut un moyen d'acceder au tableau, nous avons choisi de faire cette fonction
 	Csommet** pSOMtabTemp = GRAelem.GRAgetTabSomCopy();
 
 	if (pSOMtabTemp == nullptr) {
@@ -357,7 +364,10 @@ std::ostream & operator<<(std::ostream & out, Cgraphe & GRAelem)
 	}
 	for (iBoucle = 0; iBoucle < GRAelem.GRAGetNbSommets(); iBoucle++) {
 		out << *pSOMtabTemp[iBoucle] << std::endl;
+		delete pSOMtabTemp[iBoucle];
 	}
+
+	delete[] pSOMtabTemp;
 
 	return out;
 }
