@@ -58,7 +58,7 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 
 		try {
 			
-
+			std::cout << "--------------Creation d'un graphe a partir d'un fichier--------------" << std::endl;
 
 			//Recuperation du nombre de sommets puis d'arcs
 			getNextLine(&myFile, line);
@@ -200,7 +200,7 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 		throw Cexception(ERRFileNotOpen);
 	}
 
-
+	std::cout << "--------Fin de la Creation d'un graphe a partir d'un fichier----------" << std::endl;
 	return pGRAtemp;
 }
 

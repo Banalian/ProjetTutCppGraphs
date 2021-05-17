@@ -31,17 +31,18 @@ int main(int argc, char*argv[])
 	try {
 		pGRAGraphFile = GraphTextFileParser(argv[1]);
 
-		std::cout << *pGRAGraphFile << std::endl;
+
+		std::cout << "--------------Affichage d'un graphe--------------" << std::endl << *pGRAGraphFile << std::endl;
 
 		pGRAGraphFileInverse = new Cgraphe(*pGRAGraphFile);
 		if (pGRAGraphFile == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
-		std::cout << "Inversion du graph" << std::endl;
+		std::cout << "------------Inversion du graph-------------------" << std::endl;
 		
 		pGRAGraphFileInverse->GRAInverserGraph();
 
-		std::cout << *pGRAGraphFileInverse << std::endl;
+		std::cout << "--------------Affichage d'un graphe Inverse--------------" << std::endl << *pGRAGraphFileInverse << std::endl;
 ;
 
 	}
