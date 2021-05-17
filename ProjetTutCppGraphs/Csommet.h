@@ -18,11 +18,11 @@ private:
 	Carc** pARCtabSortant;
 
 	/** Attributs de confort : ne servent qu'au confort de codage*/
-	int iNbrArcArrivant;
-	int iNbrArcSortant;
+	int iSOMNbrArcArrivant;
+	int iSOMNbrArcSortant;
 
 	/**  Garde en memoire le numero du dernier sommet cree*/
-	static int iDernierSommet; 
+	static int iSOMDernierSommet; 
 
 public:
 

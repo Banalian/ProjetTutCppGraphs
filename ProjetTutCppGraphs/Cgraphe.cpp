@@ -10,7 +10,7 @@ int Cgraphe::GRAPlaceOfSomInTab(int iNumSom)
 {
 	int iBoucle;
 
-	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+	for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
 			return iBoucle;
 		}
@@ -25,23 +25,23 @@ int Cgraphe::GRAPlaceOfSomInTab(int iNumSom)
 Cgraphe::Cgraphe()
 {
 	pSOMtab = nullptr;
-	iNbSommets = 0;
+	iGRANbSommets = 0;
 }
 
 Cgraphe::Cgraphe(Cgraphe & GRAelem)
 {
 	int iBoucle;
 
-	iNbSommets = GRAelem.GRAGetNbSommets();
+	iGRANbSommets = GRAelem.GRAGetNbSommets();
 
 	//si un sommet existe, il faut recreer le tableau, sinon on laisse le tableau a nullptr
-	if (iNbSommets > 0) {
-		pSOMtab = new Csommet*[iNbSommets];
+	if (iGRANbSommets > 0) {
+		pSOMtab = new Csommet*[iGRANbSommets];
 		if (pSOMtab == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
 
-		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 
 			pSOMtab[iBoucle] = new Csommet(*GRAelem.pSOMtab[iBoucle]);
 			if (pSOMtab[iBoucle] == nullptr) {
@@ -64,7 +64,7 @@ Cgraphe::~Cgraphe()
 	int iBoucle;
 
 	//pas besoin de verifier s'il y a un sommet qui existe, car on sortira directement de la boucle si iNbSommet == 0
-	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+	for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 		delete pSOMtab[iBoucle];
 	}
 
@@ -79,7 +79,7 @@ Cgraphe::~Cgraphe()
 */
 int Cgraphe::GRAGetNbSommets()
 {
-	return iNbSommets;
+	return iGRANbSommets;
 }
 
 
@@ -93,7 +93,7 @@ bool Cgraphe::GRAIsSomInTab(int iNumSom)
 	int iBoucle;
 
 	//pas besoin de verifier s'il y a un sommet qui existe, car on sortira directement de la boucle si iNbSommet == 0
-	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+	for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 		if (pSOMtab[iBoucle]->SOMGetSomNum() == iNumSom) {
 			return true;
 		}
@@ -112,15 +112,15 @@ void Cgraphe::GRAAddSommet(int iNum)
 		throw Cexception(ERRSumAlreadyExist);
 	}
 
-	iNbSommets++;
+	iGRANbSommets++;
 
-	Csommet **pSOMtabTemp = new Csommet*[iNbSommets];
+	Csommet **pSOMtabTemp = new Csommet*[iGRANbSommets];
 	if (pSOMtabTemp == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
 
 	int iBoucle;
-	for (iBoucle = 0; iBoucle < (iNbSommets - 1); iBoucle++) {
+	for (iBoucle = 0; iBoucle < (iGRANbSommets - 1); iBoucle++) {
 		pSOMtabTemp[iBoucle] = pSOMtab[iBoucle];
 	}
 
@@ -181,22 +181,22 @@ void Cgraphe::GRADeleteSommet(int iNumSom)
 
 	delete pSOMtab[iBoucle];
 	pSOMtab[iBoucle] = nullptr;
-	iNbSommets--;
+	iGRANbSommets--;
 
 
-	if (iNbSommets == 0) {
+	if (iGRANbSommets == 0) {
 		delete[] pSOMtab;
 		pSOMtab = nullptr;
 	}
 	else {
-		pSOMtabTemp = new Csommet*[iNbSommets];
+		pSOMtabTemp = new Csommet*[iGRANbSommets];
 		if (pSOMtabTemp == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
 		
 		//on pourrait penser que cette boucle va oublier 1 case, mais en realite pas de probleme, car le if permet de sauter une case pour bien atteindre toutes les cases
 		//et si la case vide est a la fin, elle ne sera juste pas testee
-		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 			if (pSOMtab[iBoucle] == nullptr) {
 				iDecalage++;
 			}
@@ -256,7 +256,7 @@ void Cgraphe::GRAAfficherGraph()
 {
 	int iBoucle;
 
-	for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+	for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 		pSOMtab[iBoucle]->SOMAfficherSommet();
 	}
 
@@ -280,13 +280,13 @@ Csommet** Cgraphe::GRAgetTabSomCopy(void)
 	Csommet** pSOMtabCopy;
 	int iBoucle;
 	
-	if (iNbSommets > 0) {
-		pSOMtabCopy = new Csommet*[iNbSommets];
+	if (iGRANbSommets > 0) {
+		pSOMtabCopy = new Csommet*[iGRANbSommets];
 		if (pSOMtabCopy == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
 
-		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 			pSOMtabCopy[iBoucle] = new Csommet(*pSOMtab[iBoucle]);
 			if (pSOMtabCopy[iBoucle] == nullptr) {
 				throw Cexception(ErrNewMallocFailed);
@@ -314,7 +314,7 @@ Cgraphe & Cgraphe::operator=(Cgraphe & GRAelem)
 
 
 	if (pSOMtab) {
-		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 			delete pSOMtab[iBoucle];
 		}
 
@@ -322,16 +322,16 @@ Cgraphe & Cgraphe::operator=(Cgraphe & GRAelem)
 	}
 
 
-	iNbSommets = GRAelem.iNbSommets;
+	iGRANbSommets = GRAelem.iGRANbSommets;
 
-	if (iNbSommets > 0) {
+	if (iGRANbSommets > 0) {
 
-		pSOMtab = new Csommet*[iNbSommets];
+		pSOMtab = new Csommet*[iGRANbSommets];
 		if (pSOMtab == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
 
-		for (iBoucle = 0; iBoucle < iNbSommets; iBoucle++) {
+		for (iBoucle = 0; iBoucle < iGRANbSommets; iBoucle++) {
 			pSOMtab[iBoucle] = new Csommet(*GRAelem.pSOMtab[iBoucle]);
 			if (pSOMtab[iBoucle] == nullptr) {
 				throw Cexception(ErrNewMallocFailed);

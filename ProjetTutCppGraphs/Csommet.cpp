@@ -1,18 +1,18 @@
 #include "Csommet.h"
 #include <iostream>
 
-int Csommet::iDernerSommet = 0;
+int Csommet::iSOMDernierSommet = 0;
 
 /**
  * @brief Constructeur par defaut
  */
 Csommet::Csommet()
 {
-	iNumero = iDernerSommet + 1;
-	iDernerSommet += 1;
+	iNumero = iSOMDernierSommet + 1;
+	iSOMDernierSommet += 1;
 
-	iNbrArcArrivant = 0;
-	iNbrArcSortant = 0;
+	iSOMNbrArcArrivant = 0;
+	iSOMNbrArcSortant = 0;
 
 	pARCtabArrivant = nullptr;
 	pARCtabArrivant = nullptr;
@@ -25,13 +25,13 @@ Csommet::Csommet()
 Csommet::Csommet(int iNum)
 {
 	iNumero = iNum;
-	if (iNum == iDernerSommet) {
+	if (iNum == iSOMDernierSommet) {
 		throw Cexception(ERRSomAsSameNumAsLastSum);
 	}
-	iDernerSommet = iNum;
+	iSOMDernierSommet = iNum;
 
-	iNbrArcArrivant = 0;
-	iNbrArcSortant = 0;
+	iSOMNbrArcArrivant = 0;
+	iSOMNbrArcSortant = 0;
 
 	pARCtabArrivant = nullptr;
 	pARCtabSortant = nullptr;
@@ -46,29 +46,29 @@ Csommet::Csommet(Csommet & SOMsommet)
 	int iBoucle;
 	
 	iNumero = SOMsommet.iNumero;
-	iNbrArcArrivant = SOMsommet.iNbrArcArrivant;
-	iNbrArcSortant = SOMsommet.iNbrArcSortant;
+	iSOMNbrArcArrivant = SOMsommet.iSOMNbrArcArrivant;
+	iSOMNbrArcSortant = SOMsommet.iSOMNbrArcSortant;
 
-	pARCtabArrivant = new Carc*[iNbrArcArrivant];
+	pARCtabArrivant = new Carc*[iSOMNbrArcArrivant];
 	if (pARCtabArrivant == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
-	pARCtabSortant = new Carc*[iNbrArcSortant];
+	pARCtabSortant = new Carc*[iSOMNbrArcSortant];
 	if (pARCtabSortant == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
 
 
 
-	for (iBoucle = 0; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle = 0; iBoucle < iSOMNbrArcArrivant; iBoucle++)
 	{
-		pARCtabArrivant[iBoucle] = SOMsommet.pARCtabArrivant[iBoucle];
+		pARCtabArrivant[iBoucle] = new Carc (*SOMsommet.pARCtabArrivant[iBoucle]);
 	}
-	for (iBoucle = 0; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle = 0; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
-		pARCtabSortant[iBoucle] = SOMsommet.pARCtabSortant[iBoucle];
+		pARCtabSortant[iBoucle] = new Carc(*SOMsommet.pARCtabSortant[iBoucle]);
 	}	
-	iDernerSommet = SOMsommet.iDernerSommet;
+	iSOMDernierSommet = SOMsommet.iSOMDernierSommet;
 
 }
 
@@ -78,14 +78,14 @@ Csommet::Csommet(Csommet & SOMsommet)
 Csommet::~Csommet()
 {
 	int iBoucle = 0;
-	for (iBoucle; iBoucle <iNbrArcArrivant; iBoucle++)
+	for (iBoucle; iBoucle <iSOMNbrArcArrivant; iBoucle++)
 	{
 		delete pARCtabArrivant[iBoucle];
 	}
 
 	iBoucle = 0;
 	
-	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
 		delete pARCtabSortant[iBoucle];
 	}
@@ -106,7 +106,7 @@ void Csommet::SOMAddArcArrivant(int iDest)
 
 	int iBoucle = 0;
 
-	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcArrivant; iBoucle++)
 	{
 		if (pARCtabArrivant[iBoucle]->ARCgetDest() == iDest)
 		{
@@ -116,26 +116,26 @@ void Csommet::SOMAddArcArrivant(int iDest)
 
 	iBoucle = 0;
 
-	Carc** pArctabTemp = new Carc*[iNbrArcArrivant+1];
+	Carc** pArctabTemp = new Carc*[iSOMNbrArcArrivant+1];
 
 	if (pArctabTemp == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
 
-	for (iBoucle; iBoucle < (iNbrArcArrivant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
+	for (iBoucle; iBoucle < (iSOMNbrArcArrivant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
 	{
 		pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle];
 	}
 
-	pArctabTemp[iNbrArcArrivant] = new Carc(iDest);
-	if (pArctabTemp[iNbrArcArrivant] == nullptr) {
+	pArctabTemp[iSOMNbrArcArrivant] = new Carc(iDest);
+	if (pArctabTemp[iSOMNbrArcArrivant] == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
 
 	delete[] pARCtabArrivant;
 	pARCtabArrivant = pArctabTemp;
 
-	iNbrArcArrivant += 1;
+	iSOMNbrArcArrivant += 1;
 
 }
 
@@ -152,7 +152,7 @@ void Csommet::SOMAddArcSortant(int iDest)
 
 	int iBoucle = 0;
 
-	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
 		if (pARCtabSortant[iBoucle]->ARCgetDest() == iDest)
 		{
@@ -162,25 +162,25 @@ void Csommet::SOMAddArcSortant(int iDest)
 
 	iBoucle = 0;
 
-	Carc** pArctabTemp = new Carc*[iNbrArcSortant + 1];
+	Carc** pArctabTemp = new Carc*[iSOMNbrArcSortant + 1];
 	if (pArctabTemp == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
 
 
-	for (iBoucle; iBoucle < (iNbrArcSortant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
+	for (iBoucle; iBoucle < (iSOMNbrArcSortant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
 	{
 		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle];
 	}
 
-	pArctabTemp[iNbrArcSortant] = new Carc(iDest);
-	if (pArctabTemp[iNbrArcSortant] == nullptr) {
+	pArctabTemp[iSOMNbrArcSortant] = new Carc(iDest);
+	if (pArctabTemp[iSOMNbrArcSortant] == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
 	delete[] pARCtabSortant;
 	pARCtabSortant = pArctabTemp;
 
-	iNbrArcSortant += 1;
+	iSOMNbrArcSortant += 1;
 }
 
 /**
@@ -189,7 +189,7 @@ void Csommet::SOMAddArcSortant(int iDest)
  */
 void Csommet::SOMDeleteArcArrivant(int iDest)
 {
-	if (iNbrArcArrivant == 0)
+	if (iSOMNbrArcArrivant == 0)
 	{
 		throw Cexception(ERRNoMoreArc);
 	}
@@ -203,17 +203,17 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
 	}
 	delete pARCtabArrivant[iBoucle];
 	pARCtabArrivant[iBoucle] = nullptr;
-	iNbrArcArrivant -= 1;
+	iSOMNbrArcArrivant -= 1;
 
-	if (iNbrArcArrivant != 0)
+	if (iSOMNbrArcArrivant != 0)
 	{
-		Carc** pArctabTemp = new Carc*[iNbrArcArrivant];
+		Carc** pArctabTemp = new Carc*[iSOMNbrArcArrivant];
 		if (pArctabTemp == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
 
 		iBoucle = 0;
-		for (iBoucle; iBoucle <= iNbrArcArrivant; iBoucle++)	//On recopie la liste en supprimant la case vide
+		for (iBoucle; iBoucle <= iSOMNbrArcArrivant; iBoucle++)	//On recopie la liste en supprimant la case vide
 		{
 			if (pARCtabArrivant[iBoucle] == nullptr)
 			{
@@ -238,7 +238,7 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
  */
 void Csommet::SOMDeleteArcSortant(int iDest)
 {
-	if (iNbrArcSortant == 0)
+	if (iSOMNbrArcSortant == 0)
 	{
 		throw Cexception(ERRNoMoreArc);
 	}
@@ -252,17 +252,17 @@ void Csommet::SOMDeleteArcSortant(int iDest)
 	}
 	delete pARCtabSortant[iBoucle];
 	pARCtabSortant[iBoucle] = nullptr;
-	iNbrArcSortant -= 1;
+	iSOMNbrArcSortant -= 1;
 
-	if (iNbrArcSortant != 0)
+	if (iSOMNbrArcSortant != 0)
 	{
-		Carc** pArctabTemp = new Carc*[iNbrArcSortant];
+		Carc** pArctabTemp = new Carc*[iSOMNbrArcSortant];
 		if (pArctabTemp == nullptr) {
 			throw Cexception(ErrNewMallocFailed);
 		}
 
 		iBoucle = 0;
-		for (iBoucle; iBoucle <= iNbrArcSortant; iBoucle++)	//On recopie la liste en supprimant la case vide
+		for (iBoucle; iBoucle <= iSOMNbrArcSortant; iBoucle++)	//On recopie la liste en supprimant la case vide
 		{
 			if (pARCtabSortant[iBoucle] == nullptr)
 			{
@@ -296,7 +296,7 @@ int Csommet::SOMGetSomNum()
 */
 int Csommet::SOMGetNbArcArrivant()
 {
-	return iNbrArcArrivant;
+	return iSOMNbrArcArrivant;
 }
 
 /**
@@ -304,7 +304,7 @@ int Csommet::SOMGetNbArcArrivant()
 */
 int Csommet::SOMGetNbArcSortant()
 {
-	return iNbrArcSortant;
+	return iSOMNbrArcSortant;
 }
 
 /**
@@ -313,7 +313,7 @@ int Csommet::SOMGetNbArcSortant()
  */
 int Csommet::SOMGetDernierSommet()
 {
-	return iDernerSommet;
+	return iSOMDernierSommet;
 }
 
 /**
@@ -325,13 +325,13 @@ void Csommet::SOMAfficherSommet()
 	int iBoucle = 0;
 	std::cout << "Numero de sommet :" << iNumero << std::endl;
 	std::cout << "\t Liste des arcs entrants : \n" ;
-	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcArrivant; iBoucle++)
 	{
 		std::cout << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
 	}
 	iBoucle = 0;
 	std::cout << "\t Liste des arcs sortants : \n";
-	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
 		std::cout << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
 	}
@@ -344,7 +344,7 @@ void Csommet::SOMAfficherSommet()
  */
 int Csommet::SOMgetDestArrivant(int iPos)
 {
-	if (iPos >= iNbrArcArrivant || iPos < 0)
+	if (iPos >= iSOMNbrArcArrivant || iPos < 0)
 	{
 		throw Cexception(ERRPosOutOfRange);
 	}
@@ -358,7 +358,7 @@ int Csommet::SOMgetDestArrivant(int iPos)
  */
 int Csommet::SOMgetDestSortant(int iPos)
 {
-	if (iPos >= iNbrArcSortant || iPos < 0)
+	if (iPos >= iSOMNbrArcSortant || iPos < 0)
 	{
 		throw Cexception(ERRPosOutOfRange);
 	}
@@ -376,13 +376,13 @@ void Csommet::SOMInverserArcSom()
 	int iTemp;
 
 	pARCTemp = pARCtabArrivant;
-	iTemp = iNbrArcArrivant;
+	iTemp = iSOMNbrArcArrivant;
 
 	pARCtabArrivant = pARCtabSortant;
-	iNbrArcArrivant = iNbrArcSortant;
+	iSOMNbrArcArrivant = iSOMNbrArcSortant;
 
 	pARCtabSortant = pARCTemp;
-	iNbrArcSortant = iTemp;
+	iSOMNbrArcSortant = iTemp;
 
 	pARCTemp = nullptr;
 
@@ -395,14 +395,14 @@ void Csommet::SOMInverserArcSom()
 Csommet& Csommet::operator=(Csommet& sommet)
 {
 	int iBoucle = 0;
-	for (iBoucle; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcArrivant; iBoucle++)
 	{
 		delete pARCtabArrivant[iBoucle];
 	}
 
 	iBoucle = 0;
 
-	for (iBoucle; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
 		delete pARCtabSortant[iBoucle];
 	}
@@ -412,21 +412,21 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	iBoucle = 0;
 
 	iNumero = sommet.iNumero;
-	iNbrArcArrivant = sommet.iNbrArcArrivant;
-	iNbrArcSortant = sommet.iNbrArcSortant;
+	iSOMNbrArcArrivant = sommet.iSOMNbrArcArrivant;
+	iSOMNbrArcSortant = sommet.iSOMNbrArcSortant;
 
-	pARCtabArrivant = new Carc*[iNbrArcArrivant];
-	pARCtabSortant = new Carc*[iNbrArcSortant];
+	pARCtabArrivant = new Carc*[iSOMNbrArcArrivant];
+	pARCtabSortant = new Carc*[iSOMNbrArcSortant];
 
-	for (iBoucle = 0; iBoucle < iNbrArcArrivant; iBoucle++)
+	for (iBoucle = 0; iBoucle < iSOMNbrArcArrivant; iBoucle++)
 	{
 		pARCtabArrivant[iBoucle] = new Carc(*sommet.pARCtabArrivant[iBoucle]);
 	}
-	for (iBoucle = 0; iBoucle < iNbrArcSortant; iBoucle++)
+	for (iBoucle = 0; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
 		pARCtabSortant[iBoucle] = new Carc(*sommet.pARCtabSortant[iBoucle]);
 	}
-	iDernerSommet = sommet.iDernerSommet;
+	iSOMDernierSommet = sommet.iSOMDernierSommet;
 
 	return *this;
 }

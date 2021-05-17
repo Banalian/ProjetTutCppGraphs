@@ -168,17 +168,18 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			case ERRSumDoesntExist:
 				std::cout << "Erreur : un des sommets nomme dans un arc n'existe pas et n'a pas ete nomme dans le fichier" << std::endl;
 				break;
-			case ErrNewMallocFailed:
-				if (line) {
-					delete line;
-				}
-				myFile.close();
-				if (pGRAtemp) {
-					delete pGRAtemp;
-				}
-				throw Cexception(ErrNewMallocFailed);
+			case ERRCantAddArc:
+				std::cout << "Erreur : un arc pointant sur lui meme ne peut pas etre ajoute " << std::endl;
 				break;
-
+			case ERRArcAlreadyExists:
+				std::cout << "Erreur : un arc deja existant a essaye d'etre ajoute " << std::endl;
+				break;
+			case ERRSomAsSameNumAsLastSum:
+				std::cout << "Erreur : un sommet ne peut etre ajoute s'il a deja ete cree avant " << std::endl;
+				break;
+			case ErrNewMallocFailed:
+				std::cout << "Erreur : echec de l'operateur new" << std::endl;
+				break;
 			default:
 				std::cout << "Erreur non repertoriee" << std::endl;
 				break;

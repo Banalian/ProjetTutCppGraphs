@@ -1,3 +1,4 @@
+#pragma once
 // ProjetTutCppGraphs.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
 
@@ -62,6 +63,15 @@ int main(int argc, char*argv[])
 			break;
 		case ERRSumDoesntExist:
 			std::cout << "Erreur : Un sommet non existant a essaye d'etre supprime " << std::endl;
+			break;
+		case ERRCantAddArc:
+			std::cout << "Erreur : un arc pointant sur lui meme ne peut pas etre ajoute " << std::endl;
+			break;
+		case ERRArcAlreadyExists:
+			std::cout << "Erreur : un arc deja existant a essaye d'etre ajoute " << std::endl;
+			break;
+		case ERRSomAsSameNumAsLastSum:
+			std::cout << "Erreur : un sommet ne peut etre ajoute s'il a deja ete cree avant " << std::endl;
 			break;
 		default:
 			std::cout << "Erreur non repertoriee" << std::endl;

@@ -16,7 +16,7 @@ private:
 	Csommet **pSOMtab;
 
 	/*Nombre de sommets contenu dans le graph */
-	int iNbSommets;
+	int iGRANbSommets;
 
 	/**
 	* @brief Permet de connaitre la position dans le tableau d'un sommet du graph
