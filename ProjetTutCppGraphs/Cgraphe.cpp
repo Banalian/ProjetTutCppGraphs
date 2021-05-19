@@ -28,6 +28,11 @@ Cgraphe::Cgraphe()
 	iGRANbSommets = 0;
 }
 
+
+/**
+* @brief Constructeur de recopie
+* @param GRAelem le graphe a recopier
+*/
 Cgraphe::Cgraphe(Cgraphe & GRAelem)
 {
 	int iBoucle;
@@ -84,9 +89,9 @@ int Cgraphe::GRAGetNbSommets()
 
 
 /**
-* @brief Permet de savoir si un numero est un sommet du graph
+* @brief Permet de savoir si un numero est un sommet du graphe
 * @param iNumSom le numero a tester
-* @return Vrai si le numero fait bien parti du graph, faux sinon
+* @return Vrai si le numero fait bien parti du graphe, faux sinon
 */
 bool Cgraphe::GRAIsSomInTab(int iNumSom)
 {
@@ -264,7 +269,8 @@ void Cgraphe::GRAAfficherGraph()
 
 
 /**
-* @brief Fonction afin d'inverser tout les arcs du graphs, entre tout les sommets
+* @brief Permet de récuperer une Copie du tableau des sommets
+* @return une copie du tableau des sommets
 */
 void Cgraphe::GRAInverserGraph()
 {

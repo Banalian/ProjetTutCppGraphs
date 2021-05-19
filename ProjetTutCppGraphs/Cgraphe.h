@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include "Csommet.h"
-#include "Carc.h"
 #include "Cexception.h"
 
 #define ERRSumAlreadyExist 301
@@ -34,6 +33,7 @@ public:
 
 	/**
 	* @brief Constructeur de recopie
+	* @param GRAelem le graphe a recopier
 	*/
 	Cgraphe(Cgraphe& GRAelem);
 	
@@ -50,9 +50,9 @@ public:
 	int GRAGetNbSommets();
 
 	/**
-	* @brief Permet de savoir si un numero est un sommet du graph
+	* @brief Permet de savoir si un numero est un sommet du graphe
 	* @param iNumSom le numero a tester
-	* @return Vrai si le numero fait bien parti du graph, faux sinon
+	* @return vrai si le numero fait bien parti du graphe, faux sinon
 	*/
 	bool GRAIsSomInTab(int iNumSom);
 
@@ -96,6 +96,7 @@ public:
 
 	/**
 	* @brief Permet de récuperer une Copie du tableau des sommets
+	* @return une copie du tableau des sommets
 	*/
 	Csommet** GRAgetTabSomCopy(void);
 
