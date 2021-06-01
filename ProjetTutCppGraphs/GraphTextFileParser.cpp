@@ -67,14 +67,14 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 			strtok(line, "=");
 			buf = strtok(NULL, "=");
 			nbSommets = atoi(buf);
-			std::cout << "VAR nbSommets = "<< nbSommets << std::endl;
+			//std::cout << "VAR nbSommets = "<< nbSommets << std::endl;
 
 			getNextLine(&myFile, line);
 
 			strtok(line, "=");
 			buf = strtok(NULL, "=");
 			nbArcs = atoi(buf);
-			std::cout << "VAR nbArcs = "<< nbArcs << std::endl;
+			//std::cout << "VAR nbArcs = "<< nbArcs << std::endl;
 
 			getNextLine(&myFile, line);
 
@@ -100,7 +100,7 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 				numSom = atoi(buf);
 				pGRAtemp->GRAAddSommet(numSom);
 
-				std::cout << "Sommet "<< iBoucle << "VAR nbSom = "<< numSom <<std::endl;
+				//std::cout << "Sommet "<< iBoucle << "VAR nbSom = "<< numSom <<std::endl;
 				
 				
 			}
@@ -131,7 +131,7 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 				numArcArrivee = atoi(buf);
 				pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee);
 
-				std::cout << "Arc " << iBoucle << "VAR numArcDepart = "<< numArcDepart << " AND numArcArrivee = " << numArcArrivee <<std::endl;
+				//std::cout << "Arc " << iBoucle << "VAR numArcDepart = "<< numArcDepart << " AND numArcArrivee = " << numArcArrivee <<std::endl;
 
 
 
