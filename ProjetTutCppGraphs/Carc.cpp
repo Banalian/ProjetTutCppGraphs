@@ -7,6 +7,13 @@
 Carc::Carc(int iDest)
 {
 	iDestination = iDest;
+	iPoids = -1;
+}
+
+Carc::Carc(int iDest, int iPoids)
+{
+	this->iDestination = iDest;
+	this->iPoids = iPoids;
 }
 
 /**

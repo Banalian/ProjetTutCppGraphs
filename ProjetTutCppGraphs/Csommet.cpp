@@ -140,10 +140,57 @@ void Csommet::SOMAddArcArrivant(int iDest)
 }
 
 /**
+* @brief Ajoute un arc arrivant avec un certain poids
+* @param iDest Numero du sommet a relier
+* @param iPoidsArc Le poids de l'arc ajoute
+*/
+ void Csommet::SOMAddArcArrivant(int iDest, int iPoidsArc)
+ {
+	 if (iDest == iNumero)
+	 {
+		 throw Cexception(ERRCantAddArc);
+	 }
+
+	 int iBoucle = 0;
+
+	 for (iBoucle; iBoucle < iSOMNbrArcArrivant; iBoucle++)
+	 {
+		 if (pARCtabArrivant[iBoucle]->ARCgetDest() == iDest)
+		 {
+			 throw Cexception(ERRArcAlreadyExists);
+		 }
+	 }
+
+	 iBoucle = 0;
+
+	 Carc** pArctabTemp = new Carc*[iSOMNbrArcArrivant + 1];
+
+	 if (pArctabTemp == nullptr) {
+		 throw Cexception(ErrNewMallocFailed);
+	 }
+
+	 for (iBoucle; iBoucle < (iSOMNbrArcArrivant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
+	 {
+		 pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle];
+	 }
+
+	 pArctabTemp[iSOMNbrArcArrivant] = new Carc(iDest, iPoidsArc);
+	 if (pArctabTemp[iSOMNbrArcArrivant] == nullptr) {
+		 throw Cexception(ErrNewMallocFailed);
+	 }
+
+	 delete[] pARCtabArrivant;
+	 pARCtabArrivant = pArctabTemp;
+
+	 iSOMNbrArcArrivant += 1;
+ }
+
+
+ /**
  * @brief Ajoute un arc sortant
  * @param iDest Numero du sommet a relier
  */
-void Csommet::SOMAddArcSortant(int iDest)
+ void Csommet::SOMAddArcSortant(int iDest)
 {
 	if (iDest == iNumero)
 	{
@@ -184,9 +231,54 @@ void Csommet::SOMAddArcSortant(int iDest)
 }
 
 /**
- * @brief Supprime un arc arrivant
- * @param iDest Numero du sommet a delier
- */
+* @brief Ajoute un arc sortant avec un certain poids
+* @param iDest Numero du sommet a relier
+* @param iPoidsArc Le poids de l'arc ajoute
+*/
+void Csommet::SOMAddArcSortant(int iDest, int iPoidsArc)
+{
+	if (iDest == iNumero)
+	{
+		throw Cexception(ERRCantAddArc);
+	}
+
+	int iBoucle = 0;
+
+	for (iBoucle; iBoucle < iSOMNbrArcSortant; iBoucle++)
+	{
+		if (pARCtabSortant[iBoucle]->ARCgetDest() == iDest)
+		{
+			throw Cexception(ERRArcAlreadyExists);
+		}
+	}
+
+	iBoucle = 0;
+
+	Carc** pArctabTemp = new Carc*[iSOMNbrArcSortant + 1];
+	if (pArctabTemp == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+
+
+	for (iBoucle; iBoucle < (iSOMNbrArcSortant); iBoucle++) // On recopie dans case a case dans un tableau temporaire de taille +1
+	{
+		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle];
+	}
+
+	pArctabTemp[iSOMNbrArcSortant] = new Carc(iDest, iPoidsArc);
+	if (pArctabTemp[iSOMNbrArcSortant] == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
+	delete[] pARCtabSortant;
+	pARCtabSortant = pArctabTemp;
+
+	iSOMNbrArcSortant += 1;
+}
+
+/**
+* @brief Supprime un arc arrivant
+* @param iDest Numero du sommet a delier
+*/
 void Csommet::SOMDeleteArcArrivant(int iDest)
 {
 	if (iSOMNbrArcArrivant == 0)

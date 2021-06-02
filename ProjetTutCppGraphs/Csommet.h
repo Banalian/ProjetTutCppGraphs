@@ -50,11 +50,26 @@ public:
 	 * @param iDest Numero du sommet a relier
 	 */
 	void SOMAddArcArrivant(int iDest);
+
+	/**
+	 * @brief Ajoute un arc arrivant avec un certain poids
+	 * @param iDest Numero du sommet a relier
+	 * @param iPoidsArc Le poids de l'arc ajoute
+	 */
+	void SOMAddArcArrivant(int iDest, int iPoidsArc);
+
 	/**
 	 * @brief Ajoute un arc sortant
 	 * @param iDest Numero du sommet a relier
 	 */
 	void SOMAddArcSortant(int iDest);
+
+	/**
+	 * @brief Ajoute un arc sortant avec un certain poids
+	 * @param iDest Numero du sommet a relier
+	 * @param iPoidsArc Le poids de l'arc ajoute
+	 */
+	void SOMAddArcSortant(int iDest, int iPoidsArc);
 
 	/**
 	 * @brief Supprime un arc arrivant

@@ -232,6 +232,19 @@ void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee)
 	pSOMtab[iPosSomArrivee]->SOMAddArcArrivant(iNumSommetDepart);
 }
 
+void Cgraphe::GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee, int iPoidsArc)
+{
+	int iPosSomDepart = GRAPlaceOfSomInTab(iNumSommetDepart);
+	int iPosSomArrivee = GRAPlaceOfSomInTab(iNumSommetArrivee);
+
+	if (iPosSomDepart == -1 || iPosSomArrivee == -1) {
+		throw Cexception(ERRSumDoesntExist);
+	}
+
+	pSOMtab[iPosSomDepart]->SOMAddArcSortant(iNumSommetArrivee, iPoidsArc);
+	pSOMtab[iPosSomArrivee]->SOMAddArcArrivant(iNumSommetDepart, iPoidsArc);
+}
+
 /**
 * @brief Permet de supprimer un arc entre deux sommets
 * @param iNumSommetDepart Le numero du sommet de depart

@@ -75,6 +75,16 @@ public:
 	* @param iNumSommetArrive Le numero du sommet d'arrivee
 	*/
 	void GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee);
+
+
+	/**
+	* @brief Permet d'ajouter un arc non oriente entre deux sommets
+	* @param iNumSommetDepart Le numero du premier sommet
+	* @param iNumSommetArrive Le numero du second sommet
+	* @param iPoidsArc Le poids de l'arc cree
+	*/
+	void GRAAddArc(int iNumSommetDepart, int iNumSommetArrivee, int iPoidsArc);
+
 	
 	/**
 	* @brief Permet de supprimer un arc entre deux sommets

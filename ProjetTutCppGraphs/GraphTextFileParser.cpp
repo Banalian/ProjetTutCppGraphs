@@ -21,10 +21,10 @@
 * Numero=<Numero_sommet>
 * ]
 * Arcs=[
-* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>
-* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>
+* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>, Poids=<Poids_arc>
+* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>, Poids=<Poids_arc>
 * …
-* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>
+* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>, Poids=<Poids_arc>
 * ]
 * ----------------------------------------------------------------------
 * Exemple concret :
@@ -36,14 +36,14 @@
 * Numero=3
 * ]
 * Arcs=[
-* Debut=1, Fin=2
-* Debut=2, Fin=3
-* Debut=3, Fin=1
+* Debut=1, Fin=2, Poids=1
+* Debut=2, Fin=3, Poids=2
+* Debut=3, Fin=1, Poids=1
 * ]
 */
 Cgraphe* GraphTextFileParser(char* pcPath){
 	std::fstream myFile(pcPath);
-	int iBoucle, nbSommets, nbArcs, numSom, numArcDepart, numArcArrivee;
+	int iBoucle, nbSommets, nbArcs, numSom, numArcDepart, numArcArrivee, iPoidsArc;
 	char *buf, *line;
 	Cgraphe *pGRAtemp = nullptr;
 
@@ -129,7 +129,9 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 				numArcDepart = atoi(buf);
 				buf = strtok(NULL, "=");
 				numArcArrivee = atoi(buf);
-				pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee);
+				buf = strtok(NULL, "=");
+				iPoidsArc = atoi(buf);
+				pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee, iPoidsArc);
 
 				//std::cout << "Arc " << iBoucle << "VAR numArcDepart = "<< numArcDepart << " AND numArcArrivee = " << numArcArrivee <<std::endl;
 
