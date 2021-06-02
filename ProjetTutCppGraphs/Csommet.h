@@ -127,6 +127,12 @@ public:
 	void SOMInverserArcSom();
 
 	/**
+	* @brief Permet de recuperer une copie des arcs du tableau sortant du sommet
+	* @return la copie du tableau
+	*/
+	Carc** SOMgetTabArcCopy(void);
+
+	/**
 	* @brief Surcharge de l'opérateur egal
 	* @param sommet le sommet a utiliser pour l'operation
 	*/

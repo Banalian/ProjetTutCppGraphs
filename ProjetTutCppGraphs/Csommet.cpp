@@ -174,7 +174,7 @@ void Csommet::SOMAddArcArrivant(int iDest)
 		 pArctabTemp[iBoucle] = pARCtabArrivant[iBoucle];
 	 }
 
-	 pArctabTemp[iSOMNbrArcArrivant] = new Carc(iDest, iPoidsArc);
+	 pArctabTemp[iSOMNbrArcArrivant] = new Carc(iDest, this->iNumero, iPoidsArc);
 	 if (pArctabTemp[iSOMNbrArcArrivant] == nullptr) {
 		 throw Cexception(ErrNewMallocFailed);
 	 }
@@ -265,7 +265,7 @@ void Csommet::SOMAddArcSortant(int iDest, int iPoidsArc)
 		pArctabTemp[iBoucle] = pARCtabSortant[iBoucle];
 	}
 
-	pArctabTemp[iSOMNbrArcSortant] = new Carc(iDest, iPoidsArc);
+	pArctabTemp[iSOMNbrArcSortant] = new Carc(iDest, this->iNumero, iPoidsArc);
 	if (pArctabTemp[iSOMNbrArcSortant] == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
@@ -477,6 +477,31 @@ void Csommet::SOMInverserArcSom()
 	iSOMNbrArcSortant = iTemp;
 
 	pARCTemp = nullptr;
+
+}
+
+
+/**
+* @brief Permet de recuperer une copie des arcs du tableau sortant du sommet
+* @return la copie du tableau
+*/
+Carc ** Csommet::SOMgetTabArcCopy(void)
+{
+	Carc** pARCtabCopy;
+	int iBoucle;
+
+	if (iSOMNbrArcArrivant > 0) {
+
+		pARCtabCopy = new Carc*[iSOMNbrArcArrivant];
+		for (iBoucle = 0; iBoucle < iSOMNbrArcArrivant; iBoucle++) {
+			pARCtabCopy[iBoucle] = new Carc(*pARCtabSortant[iBoucle]);
+		}
+
+		return pARCtabCopy;
+	}
+	else {
+		return nullptr;
+	}
 
 }
 

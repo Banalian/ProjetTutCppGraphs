@@ -10,9 +10,10 @@ Carc::Carc(int iDest)
 	iPoids = -1;
 }
 
-Carc::Carc(int iDest, int iPoids)
+Carc::Carc(int iDest, int iStart, int iPoids)
 {
 	this->iDestination = iDest;
+	this->iDepart = iStart;
 	this->iPoids = iPoids;
 }
 

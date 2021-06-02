@@ -112,6 +112,14 @@ public:
 
 
 	/**
+	* @brief Permet de récuperer une Copie du tableau de tout les arcs
+	* tableau cree en recuperant tout les arcs du tableau des arcs sortant des sommets (entrant aurait donne le meme resultat
+	* @return une copie du tableau des arcs
+	*/
+	Carc** GRAgetTabAllArcsCopy(void);
+
+
+	/**
 	* @brief Surcharge du = => equivalent au constructeur de recopie
 	* @param GRAelem le graph a copier
 	* @return le graph copie

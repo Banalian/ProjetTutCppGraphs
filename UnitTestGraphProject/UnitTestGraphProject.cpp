@@ -1,6 +1,5 @@
 #pragma once
 
-#include "pch.h"
 #include "CppUnitTest.h"
 #include "../ProjetTutCppGraphs/Cgraphe.h"
 #include "../ProjetTutCppGraphs/Csommet.h"

@@ -321,6 +321,43 @@ Csommet** Cgraphe::GRAgetTabSomCopy(void)
 	
 }
 
+Carc ** Cgraphe::GRAgetTabAllArcsCopy(void)
+{
+	int iBoucleSom, iBoucleArcSom, iNbArcCurrent, iNbArcTotalAdded;
+	int iNbArcTotal = 0;
+
+	//on recupere le nombre total d'arcs du graphe
+	for (iBoucleSom = 0; iBoucleSom < iGRANbSommets; iBoucleSom++) {
+		iNbArcTotal += pSOMtab[iBoucleSom]->SOMGetNbArcSortant();
+	}
+
+	Carc** pARCtotal = new Carc*[iNbArcTotal];
+
+	//on ajoute tout les arcs dans un grand tableau unique
+	for (iBoucleSom = 0; iBoucleSom < iGRANbSommets; iBoucleSom++) {
+		
+		iNbArcCurrent = pSOMtab[iBoucleSom]->SOMGetNbArcSortant();
+
+		Carc** pARCtemp = pSOMtab[iBoucleSom]->SOMgetTabArcCopy();
+
+
+
+		for (iBoucleArcSom = 0; iBoucleArcSom < iNbArcCurrent; iBoucleArcSom++, iNbArcTotalAdded++) {
+			//pARCtotal[iNbArcTotalAdded] = new Carc(*pARCtemp[iBoucleArcSom]); //safe method
+			//delete pARCtemp[iBoucleArcSom];
+
+			pARCtotal[iNbArcTotalAdded] = pARCtemp[iBoucleArcSom]; //not so safe method
+		}
+
+		if(pARCtemp != nullptr)
+			delete pARCtemp;
+
+
+	}
+
+	return pARCtotal;
+}
+
 
 /**
 * @brief Surcharge du = => equivalent au constructeur de recopie

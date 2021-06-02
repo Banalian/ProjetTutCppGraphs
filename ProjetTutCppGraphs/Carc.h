@@ -2,8 +2,15 @@
 class Carc
 {
 private:
-	/** variable contenant la destination de l'arc (qui n'indique pas forcement le sens de l'arc) */
+	/** variable contenant le second sommet de l'arc (qui n'indique pas forcement le sens de l'arc) */
 	int iDestination;
+	
+	/**
+	 * variable contenant le premier sommet de l'arc (qui n'indique pas forcement le sens de l'arc).
+	 * utile lorsque l'arc est en dehors de son sommet d'origine
+	 */
+	int iDepart;
+	/** variable contenant le poids de l'arc (c'est a dire sa "longueur" entre ces deux sommets */
 	int iPoids;
 public:
 
@@ -17,9 +24,10 @@ public:
 	/**
 	* @brief Constructeur de Carc, contenant le numero du sommet de destination
 	* @param iDest le sommet de destination
+	* @param iStart l'autre sommet du duo
 	* @param iPoids le poids de l'arete
 	*/
-	Carc(int iDest, int iPoids);
+	Carc(int iDest, int iStart, int iPoids);
 
 	/**
 	* @brief Destructeur de Carc
