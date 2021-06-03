@@ -43,7 +43,18 @@ int main(int argc, char*argv[])
 		pGRAGraphFileInverse->GRAInverserGraph();
 
 		std::cout << "--------------Affichage d'un graphe Inverse--------------" << std::endl << *pGRAGraphFileInverse << std::endl;
-;
+
+		Carc** testTab = pGRAGraphFile->GRAgetTabAllArcsCopy();
+		int nbArcsTot = pGRAGraphFile->GRAgetNbAllArcs();
+
+		std::cout << "--------------Affichage des arcs du graphe de base--------------" << std::endl << *pGRAGraphFileInverse << std::endl;
+		for (int i = 0; i < nbArcsTot; i++) {
+			std::cout	<< "ARC d'origine " << testTab[i]->ARCgetDepart() 
+						<< " et de dest " << testTab[i]->ARCgetDest()
+						<< " avec un poids de " << testTab[i]->ARCgetPoids() << std::endl;
+		}
+
+
 
 	}
 	catch (Cexception e) {

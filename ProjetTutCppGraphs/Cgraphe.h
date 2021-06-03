@@ -118,6 +118,11 @@ public:
 	*/
 	Carc** GRAgetTabAllArcsCopy(void);
 
+	/**
+	 * @brief Donne le nombre d'arc contenu dans le graph au total.
+	 * @return le nombre d'arcs total 
+	 */
+	int GRAgetNbAllArcs(void);
 
 	/**
 	* @brief Surcharge du = => equivalent au constructeur de recopie

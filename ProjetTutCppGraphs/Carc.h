@@ -45,5 +45,17 @@ public:
 	* @return le sommet de destination
 	*/
 	int ARCgetDest();
+
+	/**
+	* @brief Permet de recuperer le sommet de depart de l'arc
+	* @return le sommet de depart
+	*/
+	int ARCgetDepart();
+
+	/**
+	* @brief Permet de recuperer le poids de l'arc
+	* @return le poids du sommet 
+	*/
+	int ARCgetPoids();
 };
 

@@ -156,6 +156,7 @@
     <ClCompile Include="Cgraphe.cpp" />
     <ClCompile Include="Csommet.cpp" />
     <ClCompile Include="GraphTextFileParser.cpp" />
+    <ClCompile Include="Kruskal.cpp" />
     <ClCompile Include="ProjetTutCppGraphs.cpp" />
   </ItemGroup>
   <ItemGroup>

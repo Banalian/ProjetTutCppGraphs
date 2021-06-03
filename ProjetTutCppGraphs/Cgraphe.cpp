@@ -323,13 +323,9 @@ Csommet** Cgraphe::GRAgetTabSomCopy(void)
 
 Carc ** Cgraphe::GRAgetTabAllArcsCopy(void)
 {
-	int iBoucleSom, iBoucleArcSom, iNbArcCurrent, iNbArcTotalAdded;
-	int iNbArcTotal = 0;
+	int iBoucleSom, iBoucleArcSom, iNbArcCurrent;
+	int iNbArcTotal = GRAgetNbAllArcs(), iNbArcTotalAdded = 0;
 
-	//on recupere le nombre total d'arcs du graphe
-	for (iBoucleSom = 0; iBoucleSom < iGRANbSommets; iBoucleSom++) {
-		iNbArcTotal += pSOMtab[iBoucleSom]->SOMGetNbArcSortant();
-	}
 
 	Carc** pARCtotal = new Carc*[iNbArcTotal];
 
@@ -350,12 +346,29 @@ Carc ** Cgraphe::GRAgetTabAllArcsCopy(void)
 		}
 
 		if(pARCtemp != nullptr)
-			delete pARCtemp;
+			delete[] pARCtemp;
 
 
 	}
 
 	return pARCtotal;
+}
+
+/**
+* @brief Donne le nombre d'arc contenu dans le graph au total.
+* @return le nombre d'arcs total
+*/
+int Cgraphe::GRAgetNbAllArcs(void)
+{
+	int iBoucleSom;
+	int iNbArcTotal = 0;
+
+	//on recupere le nombre total d'arcs du graphe
+	for (iBoucleSom = 0; iBoucleSom < iGRANbSommets; iBoucleSom++) {
+		iNbArcTotal += pSOMtab[iBoucleSom]->SOMGetNbArcSortant();
+	}
+
+	return iNbArcTotal;
 }
 
 

@@ -41,3 +41,13 @@ int Carc::ARCgetDest()
 {
 	return iDestination;
 }
+
+int Carc::ARCgetDepart()
+{
+	return iDepart;
+}
+
+int Carc::ARCgetPoids()
+{
+	return iPoids;
+}
