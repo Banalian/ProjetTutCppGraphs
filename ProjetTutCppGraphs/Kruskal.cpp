@@ -53,3 +53,7 @@ Cgraphe* kruskal(Cgraphe* pGRAbase) {
 	return pGRAresult;
 }
 
+bool TriArc(Carc &firstArc, Carc &otherArc) {
+	return (firstArc.ARCgetPoids() < otherArc.ARCgetPoids());
+}
+
