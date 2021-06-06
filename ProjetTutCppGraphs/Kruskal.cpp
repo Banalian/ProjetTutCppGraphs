@@ -1,7 +1,4 @@
-#include "Cgraphe.h"
 #include "Kruskal.h"
-#include <algorithm>
-
 
 
 
@@ -41,7 +38,7 @@ Cgraphe* kruskal(Cgraphe* pGRAbase) {
 	}
 
 	//trier tab arc ordre croissant du poids
-	std::sort(pARCtabArcsTotalGraphe[0], pARCtabArcsTotalGraphe[iNbArcsTotal], triArc(, ));
+	std::sort( pARCtabArcsTotalGraphe, pARCtabArcsTotalGraphe + iNbArcsTotal, triArc);
 
 	for (iBoucle = 0; iBoucle < iNbArcsTotal; iBoucle++) {
 		//soit (u,v) l'arrete pARCtabArcsTotalGraphe[iBoucle]
@@ -85,6 +82,7 @@ SensembleSommets* findEnsembleFromSommet(SensembleSommets** &tabEns, int iSizeTa
 		}		
 	}
 		
+	//throw new Cexception(-1);
 	//return null which mean no ensemble found
 	return nullptr;
 }
@@ -96,59 +94,92 @@ SensembleSommets* findEnsembleFromSommet(SensembleSommets** &tabEns, int iSizeTa
  * @param pENSa le premier ensemble a fusioner
  * @param pENSb le second ensemble a fusioner
  */
-void fusionEnsembles(SensembleSommets** &pENSTab, int iSizeTabENS, SensembleSommets* &pENSa, SensembleSommets* &pENSb) {
+void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSommets* &pENSa, SensembleSommets* &pENSb) {
 	int iTailleC, iBoucle, iDecalage;
-	SensembleSommets* pENSc;
+	SensembleSommets* pENSc, *pENStemp;
 	SensembleSommets** pENSNewTab;
 	//recup taille
 	iTailleC = pENSa->iTailleTab + pENSb->iTailleTab;
+
 	//nouvel ensemble C de taille a+b
 	pENSc = new SensembleSommets();
 	pENSc->iTailleTab = iTailleC;
 	pENSc->pSOMtab = new Csommet*[iTailleC];
+
 	//recopie de A dans C
 	for (iBoucle = 0; iBoucle < pENSa->iTailleTab; iBoucle++) {
 		pENSc->pSOMtab[iBoucle] = new Csommet(*pENSa->pSOMtab[iBoucle]);
 	}
 	//recopie de B dans C
 	for (iBoucle = pENSa->iTailleTab; iBoucle < iTailleC; iBoucle++) {
-		pENSc->pSOMtab[iBoucle] = new Csommet(*pENSa->pSOMtab[iBoucle - pENSa->iTailleTab]);
+		pENSc->pSOMtab[iBoucle] = new Csommet(*pENSb->pSOMtab[iBoucle - pENSa->iTailleTab]);
 	}
-	//delete A et B et mettre a nullptr
-	for (iBoucle = 0; iBoucle < pENSa->iTailleTab; iBoucle++) {
-		delete pENSa->pSOMtab[iBoucle];
-	}
-	delete[] pENSa->pSOMtab;
-	delete pENSa;
-	pENSa = nullptr;
+	
+	
+	
 
-	for (iBoucle = 0; iBoucle < pENSb->iTailleTab; iBoucle++) {
-		delete pENSb->pSOMtab[iBoucle];
-	}
-	delete[] pENSb->pSOMtab;
-	delete pENSb;
-	pENSb = nullptr;
+	
+
 
 	//recopie pC dans pA
-	pENSa = pENSc;
+	//pENSa = pENSc;
+
+
 	//nouveau tab EnsB de taille -1
 	pENSNewTab = new SensembleSommets*[iSizeTabENS - 1];
 
 	//recopie tab EnsA dans ENSB
-	for (iBoucle = 0, iDecalage = 0; iBoucle < iSizeTabENS - 1; iBoucle++) {
-		if (pENSTab[iBoucle] != nullptr) {
-			pENSNewTab[iBoucle] = pENSTab[iBoucle + iDecalage];
-		}
-		else {
+	for (iBoucle = 0, iDecalage = 0; iBoucle < iSizeTabENS; iBoucle++) {
+		if (pENSTab[iBoucle] == pENSb) {
 			iDecalage++;//n'arrivera qu'une fois
 		}
+		if (pENSTab[iBoucle + iDecalage] == pENSa) {
+			pENSNewTab[iBoucle] = pENSc;
+		}
+		else {
+			pENSNewTab[iBoucle] = pENSTab[iBoucle + iDecalage];
+		}
+		
 	}
 	
+
+	//delete A et mettre a nullptr
+	for (iBoucle = 0; iBoucle < pENSa->iTailleTab; iBoucle++) {
+		delete pENSa->pSOMtab[iBoucle];
+		pENSa->pSOMtab[iBoucle] = nullptr;
+	}
+	delete[] pENSa->pSOMtab;
+	pENSa->pSOMtab = nullptr;
+	pENStemp = pENSa;
+	pENSa = nullptr;
+	delete pENStemp;
+
+	//delete de B 
+	for (iBoucle = 0; iBoucle < pENSb->iTailleTab; iBoucle++) {
+		delete pENSb->pSOMtab[iBoucle];
+		pENSb->pSOMtab[iBoucle] = nullptr;
+	}
+	delete[] pENSb->pSOMtab;
+	pENSb->pSOMtab = nullptr;
+	pENStemp = pENSb;
+	pENSb = nullptr;
+	delete pENStemp;
+	
+
+
+
 	delete[] pENSTab;
 	pENSTab = pENSNewTab;
+	iSizeTabENS--;
 }
 
-
-bool triArc(Carc &firstArc, Carc &otherArc) {
-	return (firstArc.ARCgetPoids() < otherArc.ARCgetPoids());
+/**
+ * @brief fonction de tri pour la fonction sort
+ * 
+ * @param firstArc Premier arc a trier
+ * @param otherArc Seconde arc a trier
+ * @return 1 si otherarc a un poids plus important, 0 sinon
+ */
+bool triArc(Carc* firstArc, Carc* otherArc) {
+	return (firstArc->ARCgetPoids() < otherArc->ARCgetPoids());
 }

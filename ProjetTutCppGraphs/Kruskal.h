@@ -1,7 +1,8 @@
 #pragma once
 #include "Cgraphe.h"
+#include <algorithm>
 
-typedef struct SensembleSommets
+struct SensembleSommets
 {
 	Csommet** pSOMtab;
 	int iTailleTab;
@@ -37,4 +38,13 @@ SensembleSommets* findEnsembleFromSommet(SensembleSommets** &tabEns, int iSizeTa
  * @param pENSa le premier ensemble a fusioner
  * @param pENSb le second ensemble a fusioner
  */
-void fusionEnsembles(SensembleSommets** &pENSTab, int iSizeTabENS, SensembleSommets* &pENSa, SensembleSommets* &pENSb);
+void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSommets* &pENSa, SensembleSommets* &pENSb);
+
+/**
+ * @brief fonction de tri pour la fonction sort
+ *
+ * @param firstArc Premier arc a trier
+ * @param otherArc Seconde arc a trier
+ * @return 1 si otherarc a un poids plus important, 0 sinon
+ */
+bool triArc(Carc* firstArc, Carc* otherArc);

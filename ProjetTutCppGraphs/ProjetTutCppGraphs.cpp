@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Cgraphe.h"
 #include "GraphTextFileParser.h"
+#include "Kruskal.h"
 
 int main(int argc, char*argv[])
 {
@@ -26,7 +27,7 @@ int main(int argc, char*argv[])
 		return -1;
 	}
 
-	Cgraphe *pGRAGraphFile, *pGRAGraphFileInverse;
+	Cgraphe *pGRAGraphFile, *pGRAGraphFileInverse, *pGRAGraphArbreCovenant;
 
 	try {
 		pGRAGraphFile = GraphTextFileParser(argv[1]);
@@ -54,6 +55,11 @@ int main(int argc, char*argv[])
 						<< " avec un poids de " << testTab[i]->ARCgetPoids() << std::endl;
 		}
 
+
+		pGRAGraphArbreCovenant = kruskal(pGRAGraphFile);
+
+
+		std::cout << "--------------Affichage de l'arbre covenant de poids minimal--------------" << std::endl << *pGRAGraphArbreCovenant << std::endl;
 
 
 	}

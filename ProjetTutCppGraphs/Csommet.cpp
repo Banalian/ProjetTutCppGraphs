@@ -25,9 +25,9 @@ Csommet::Csommet()
 Csommet::Csommet(int iNum)
 {
 	iNumero = iNum;
-	if (iNum == iSOMDernierSommet) {
-		throw Cexception(ERRSomAsSameNumAsLastSum);
-	}
+	//if (iNum == iSOMDernierSommet) {
+	//	throw Cexception(ERRSomAsSameNumAsLastSum);
+	//}
 	iSOMDernierSommet = iNum;
 
 	iSOMNbrArcArrivant = 0;
