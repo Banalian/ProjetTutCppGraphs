@@ -490,10 +490,10 @@ Carc ** Csommet::SOMgetTabArcCopy(void)
 	Carc** pARCtabCopy;
 	int iBoucle;
 
-	if (iSOMNbrArcArrivant > 0) {
+	if (iSOMNbrArcSortant > 0) {
 
-		pARCtabCopy = new Carc*[iSOMNbrArcArrivant];
-		for (iBoucle = 0; iBoucle < iSOMNbrArcArrivant; iBoucle++) {
+		pARCtabCopy = new Carc*[iSOMNbrArcSortant];
+		for (iBoucle = 0; iBoucle < iSOMNbrArcSortant; iBoucle++) {
 			pARCtabCopy[iBoucle] = new Carc(*pARCtabSortant[iBoucle]);
 		}
 
