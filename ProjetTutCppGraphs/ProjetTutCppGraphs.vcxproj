@@ -165,6 +165,7 @@
     <ClInclude Include="Cgraphe.h" />
     <ClInclude Include="Csommet.h" />
     <ClInclude Include="GraphTextFileParser.h" />
+    <ClInclude Include="Kruskal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
