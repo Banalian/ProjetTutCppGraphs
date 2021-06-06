@@ -1,5 +1,7 @@
 #include "Cgraphe.h"
 #include "Kruskal.h"
+#include <algorithm>
+
 
 
 
@@ -39,6 +41,7 @@ Cgraphe* kruskal(Cgraphe* pGRAbase) {
 	}
 
 	//trier tab arc ordre croissant du poids
+	std::sort(pARCtabArcsTotalGraphe[0], pARCtabArcsTotalGraphe[iNbArcsTotal], triArc(, ));
 
 	for (iBoucle = 0; iBoucle < iNbArcsTotal; iBoucle++) {
 		//soit (u,v) l'arrete pARCtabArcsTotalGraphe[iBoucle]
@@ -146,3 +149,6 @@ void fusionEnsembles(SensembleSommets** &pENSTab, int iSizeTabENS, SensembleSomm
 }
 
 
+bool triArc(Carc &firstArc, Carc &otherArc) {
+	return (firstArc.ARCgetPoids() < otherArc.ARCgetPoids());
+}
