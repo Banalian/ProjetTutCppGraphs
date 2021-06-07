@@ -27,7 +27,7 @@ int main(int argc, char*argv[])
 		return -1;
 	}
 
-	Cgraphe *pGRAGraphFile, *pGRAGraphFileInverse, *pGRAGraphArbreCovenant;
+	Cgraphe *pGRAGraphFile, *pGRAGraphFileInverse, *pGRAGraphArbreCouvrant;
 
 	try {
 		pGRAGraphFile = GraphTextFileParser(argv[1], true);
@@ -58,11 +58,11 @@ int main(int argc, char*argv[])
 		}
 
 
-		pGRAGraphArbreCovenant = kruskal(pGRAGraphFile);
+		pGRAGraphArbreCouvrant = kruskal(pGRAGraphFile);
 
 
 		std::cout << "--------------Affichage de l'arbre couvrant de poids minimal--------------" << std::endl;
-		std::cout << *pGRAGraphArbreCovenant << std::endl;
+		std::cout << *pGRAGraphArbreCouvrant << std::endl;
 
 
 	}
