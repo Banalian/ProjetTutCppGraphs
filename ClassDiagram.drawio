@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2021-05-28T15:53:19.969Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" etag="3oxBF8_530uq7JCzlnWl" version="14.6.13" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-07T11:55:50.236Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="A__WiO5koOc00m29_RMd" version="14.7.2" type="github">
   <diagram id="o4O8a7EBtK5oRw8HxuOW" name="Page-1">
-    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1185" dy="635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="bLQx4u1SUMKuMdxCQeeX-1" value="Cgraphe" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="10" y="54" width="420" height="340" as="geometry" />
+          <mxGeometry x="320" y="30" width="420" height="380" as="geometry" />
         </mxCell>
         <mxCell id="bLQx4u1SUMKuMdxCQeeX-2" value="-  pSOMtab : Csommet**&#xa;- iGRANbSommets : entier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="bLQx4u1SUMKuMdxCQeeX-1" vertex="1">
           <mxGeometry y="26" width="420" height="44" as="geometry" />
@@ -13,11 +13,11 @@
         <mxCell id="bLQx4u1SUMKuMdxCQeeX-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="bLQx4u1SUMKuMdxCQeeX-1" vertex="1">
           <mxGeometry y="70" width="420" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="bLQx4u1SUMKuMdxCQeeX-4" value="&lt;&lt;create&gt;&gt;+ Cgraphe()&#xa;&lt;&lt;create&gt;&gt;+ Ggraphe(GRAelem : Cgraphe)&#xa;&lt;&lt;destroy&gt;&gt; +Cgraphe()&#xa;&#xa;- GRAPlaceOfSomInTab(iNumSom :entier) : entier&#xa;+ GRAGetNbSommets() : entier&#xa;+ GRAIsSomInTab( iNumSom) : boolean&#xa;+ GRAAddSommet(eNum : entier)&#xa;+ GRADeleteSommet(eNumSom : entier)&#xa;&#xa;+ GRAAddArc( eNumSommetDepart : entier, eNumSommetArrive : entier )&#xa;+ GRADeleteArc ( eNumSommetDepart : entier, eNumSommetArrive : entier )&#xa;&#xa;+ GRAAfficherGraph()&#xa;+ GRAInverserGraph()&#xa;+ GRAgetTabSomCopy() : Csommet**&#xa;+ operator=(GRAelem : Cgraphe) : Cgraphe&#xa;+ operator&lt;&lt;(out : std::ostream, GRAelem : Cgraphe) : std::ostream" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="bLQx4u1SUMKuMdxCQeeX-1" vertex="1">
-          <mxGeometry y="78" width="420" height="262" as="geometry" />
+        <mxCell id="bLQx4u1SUMKuMdxCQeeX-4" value="&lt;&lt;create&gt;&gt;+ Cgraphe()&#xa;&lt;&lt;create&gt;&gt;+ Ggraphe(GRAelem : Cgraphe)&#xa;&lt;&lt;destroy&gt;&gt; +Cgraphe()&#xa;&#xa;- GRAPlaceOfSomInTab(iNumSom :entier) : entier&#xa;+ GRAGetNbSommets() : entier&#xa;+ GRAIsSomInTab( iNumSom) : boolean&#xa;+ GRAAddSommet(eNum : entier)&#xa;+ GRADeleteSommet(eNumSom : entier)&#xa;&#xa;+ GRAAddArc( eNumSommetDepart : entier, eNumSommetArrive : entier )&#xa;+ GRADeleteArc ( eNumSommetDepart : entier, eNumSommetArrive : entier )&#xa;&#xa;+ GRAAfficherGraph()&#xa;+ GRAInverserGraph()&#xa;+ GRAgetTabSomCopy() : Csommet**&#xa;+ GRAgetTabAllArcsCopy() : Carc**&#xa;+ operator=(GRAelem : Cgraphe) : Cgraphe&#xa;+ operator&lt;&lt;(out : std::ostream, GRAelem : Cgraphe) : std::ostream" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="bLQx4u1SUMKuMdxCQeeX-1" vertex="1">
+          <mxGeometry y="78" width="420" height="302" as="geometry" />
         </mxCell>
         <mxCell id="zVvoivQQcT_Ts4mum_z7-1" value="Csommet" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="527.5" y="54" width="380" height="490" as="geometry" />
+          <mxGeometry x="837.5" y="30" width="380" height="490" as="geometry" />
         </mxCell>
         <mxCell id="zVvoivQQcT_Ts4mum_z7-2" value="- iNumero : entier&#xa;- pARCtabArrivant : Carc**&#xa;- pARCtabSortant : Carc**&#xa;&#xa;- iSOMNbrArcArrivant : entier&#xa;- iSOMNbrArcSortant : entier&#xa;- iSOMDernierSommet :  entier statique" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-1" vertex="1">
           <mxGeometry y="26" width="380" height="114" as="geometry" />
@@ -25,23 +25,23 @@
         <mxCell id="zVvoivQQcT_Ts4mum_z7-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-1" vertex="1">
           <mxGeometry y="140" width="380" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zVvoivQQcT_Ts4mum_z7-4" value="&lt;&lt;create&gt;&gt;+ Csommet()&#xa;&lt;&lt;create&gt;&gt;+ Csommet(eNum: entier)&#xa;&lt;&lt;create&gt;&gt;+ Csommet(SOMsommet: Csommet)&#xa;&lt;&lt;destroy&gt;&gt;+ Csommet()&#xa;&#xa;+ SOMAddArcArrivant (pARCelem : Carc*)&#xa;+ SOMAddArcSortant(pARCelem : Carc*)&#xa;&#xa;+ SOMDeleteArcArrivant(eDest : entier)&#xa;+ SOMDeleteArcSortant(eDest : entier);&#xa;&#xa;+ SOMGetSomNum() : entier&#xa;+ SOMGetNbArcArrivant() : entier&#xa;+ SOMGetNbArcSortant() : entier&#xa;+ SOMGetDernierSommet() : entier&#xa;+ SOMAfficherSommet()&#xa;&#xa;+ SOMgetDestArrivant(iPos : entier) : entier&#xa;+ SOMgetDestSortant(iPos : entier) : entier&#xa;+ SOMInverserArcSom()&#xa;&#xa;+ operator=(sommet : Csommet) : Csommet&#xa;+ operator&lt;&lt;(out : std::ostream, SOMelem:Csommet) : std::ostream" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-1" vertex="1">
+        <mxCell id="zVvoivQQcT_Ts4mum_z7-4" value="&lt;&lt;create&gt;&gt;+ Csommet()&#xa;&lt;&lt;create&gt;&gt;+ Csommet(eNum: entier)&#xa;&lt;&lt;create&gt;&gt;+ Csommet(SOMsommet: Csommet)&#xa;&lt;&lt;destroy&gt;&gt;+ Csommet()&#xa;&#xa;+ SOMAddArcArrivant (pARCelem : Carc*)&#xa;+ SOMAddArcSortant(pARCelem : Carc*)&#xa;&#xa;+ SOMDeleteArcArrivant(eDest : entier)&#xa;+ SOMDeleteArcSortant(eDest : entier);&#xa;&#xa;+ SOMGetSomNum() : entier&#xa;+ SOMGetNbArcArrivant() : entier&#xa;+ SOMGetNbArcSortant() : entier&#xa;+ SOMGetDernierSommet() : entier&#xa;+ SOMAfficherSommet()&#xa;&#xa;+ SOMgetDestArrivant(iPos : entier) : entier&#xa;+ SOMgetDestSortant(iPos : entier) : entier&#xa;+ SOMInverserArcSom()&#xa;+ SOMgetTabArcCopy() : Carc**&#xa;&#xa;+ operator=(sommet : Csommet) : Csommet&#xa;+ operator&lt;&lt;(out : std::ostream, SOMelem:Csommet) : std::ostream" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-1" vertex="1">
           <mxGeometry y="148" width="380" height="342" as="geometry" />
         </mxCell>
         <mxCell id="zVvoivQQcT_Ts4mum_z7-5" value="Carc" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="615" y="700" width="205" height="130" as="geometry" />
+          <mxGeometry x="847.5" y="663.5" width="370" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="zVvoivQQcT_Ts4mum_z7-6" value="- iDestination  : entier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-5" vertex="1">
-          <mxGeometry y="26" width="205" height="26" as="geometry" />
+        <mxCell id="zVvoivQQcT_Ts4mum_z7-6" value="- iDestination  : entier&#xa;- iDepart : entier&#xa;- iPoids : entier" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-5" vertex="1">
+          <mxGeometry y="26" width="370" height="54" as="geometry" />
         </mxCell>
         <mxCell id="zVvoivQQcT_Ts4mum_z7-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-5" vertex="1">
-          <mxGeometry y="52" width="205" height="8" as="geometry" />
+          <mxGeometry y="80" width="370" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="zVvoivQQcT_Ts4mum_z7-8" value="&lt;&lt;create&gt;&gt;+ Carc(eDest : entier)&#xa;&lt;&lt;destroy&gt;&gt;+ Carc();&#xa;+ ARCModifDest(eNewDest : entier)&#xa;+ ARCGetDest() : entier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-5" vertex="1">
-          <mxGeometry y="60" width="205" height="70" as="geometry" />
+        <mxCell id="zVvoivQQcT_Ts4mum_z7-8" value="&lt;&lt;create&gt;&gt;+ Carc(eDest : entier)&#xa;&lt;&lt;create&gt;&gt;+ Carc(eDest : entier, eStart : entier, ePoids : entier)&#xa;&lt;&lt;destroy&gt;&gt;+ Carc();&#xa;+ ARCModifDest(eNewDest : entier)&#xa;+ ARCGetDest() : entier&#xa;+ ARCGetPoids() : entier" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-5" vertex="1">
+          <mxGeometry y="88" width="370" height="92" as="geometry" />
         </mxCell>
         <mxCell id="zVvoivQQcT_Ts4mum_z7-9" value="Cexception" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="184" y="480" width="230" height="150" as="geometry" />
+          <mxGeometry x="494" y="456" width="230" height="150" as="geometry" />
         </mxCell>
         <mxCell id="zVvoivQQcT_Ts4mum_z7-10" value="- eEXCCode: entier" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="zVvoivQQcT_Ts4mum_z7-9" vertex="1">
           <mxGeometry y="26" width="230" height="26" as="geometry" />
@@ -54,45 +54,80 @@
         </mxCell>
         <mxCell id="oKEsJH-ae9x5906RW8em-7" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;" parent="1" source="zVvoivQQcT_Ts4mum_z7-1" target="zVvoivQQcT_Ts4mum_z7-9" edge="1">
           <mxGeometry x="0.1854" y="33" width="160" relative="1" as="geometry">
-            <mxPoint x="500" y="460" as="sourcePoint" />
-            <mxPoint x="460" y="570" as="targetPoint" />
+            <mxPoint x="810" y="436" as="sourcePoint" />
+            <mxPoint x="770" y="546" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="oKEsJH-ae9x5906RW8em-8" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;exitX=0.69;exitY=1.019;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="bLQx4u1SUMKuMdxCQeeX-4" target="zVvoivQQcT_Ts4mum_z7-9" edge="1">
           <mxGeometry x="0.0168" y="-34" width="160" relative="1" as="geometry">
-            <mxPoint x="100" y="300" as="sourcePoint" />
-            <mxPoint x="470" y="580" as="targetPoint" />
+            <mxPoint x="410" y="276" as="sourcePoint" />
+            <mxPoint x="780" y="556" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="oKEsJH-ae9x5906RW8em-10" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;entryX=0.001;entryY=0.061;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="bLQx4u1SUMKuMdxCQeeX-1" target="zVvoivQQcT_Ts4mum_z7-4" edge="1">
+        <mxCell id="oKEsJH-ae9x5906RW8em-10" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;entryX=-0.009;entryY=0.123;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="bLQx4u1SUMKuMdxCQeeX-1" target="zVvoivQQcT_Ts4mum_z7-4" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="530" y="490" as="sourcePoint" />
-            <mxPoint x="490" y="600" as="targetPoint" />
+            <mxPoint x="840" y="466" as="sourcePoint" />
+            <mxPoint x="800" y="576" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="oKEsJH-ae9x5906RW8em-13" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;" parent="1" source="zVvoivQQcT_Ts4mum_z7-1" target="zVvoivQQcT_Ts4mum_z7-5" edge="1">
           <mxGeometry x="-0.0959" y="33" width="160" relative="1" as="geometry">
-            <mxPoint x="550" y="510" as="sourcePoint" />
-            <mxPoint x="510" y="620" as="targetPoint" />
+            <mxPoint x="860" y="486" as="sourcePoint" />
+            <mxPoint x="820" y="596" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PUwavAEvDR2ULnOhyYn0-1" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;span style=&quot;text-align: left&quot;&gt;GraphTextFileParser&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ GraphTextFileParser(pcPath : char*): Cgraphe*&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ getNextLine(myFile : std::fstream*, line : char* )&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="80" y="740" width="280" height="80" as="geometry" />
+          <mxGeometry x="390" y="716" width="280" height="80" as="geometry" />
         </mxCell>
         <mxCell id="PUwavAEvDR2ULnOhyYn0-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;exitX=0.329;exitY=1.008;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="bLQx4u1SUMKuMdxCQeeX-4" target="PUwavAEvDR2ULnOhyYn0-1" edge="1">
           <mxGeometry x="0.1181" y="-30" width="160" relative="1" as="geometry">
-            <mxPoint x="230" y="264" as="sourcePoint" />
-            <mxPoint x="60" y="560" as="targetPoint" />
+            <mxPoint x="540" y="240" as="sourcePoint" />
+            <mxPoint x="370" y="536" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="PUwavAEvDR2ULnOhyYn0-3" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;entryX=0.513;entryY=1.022;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="zVvoivQQcT_Ts4mum_z7-12" edge="1">
           <mxGeometry x="-0.2243" y="-25" width="160" relative="1" as="geometry">
-            <mxPoint x="302" y="739" as="sourcePoint" />
-            <mxPoint x="219" y="574" as="targetPoint" />
+            <mxPoint x="612" y="715" as="sourcePoint" />
+            <mxPoint x="529" y="550" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-5" value="&lt;p style=&quot;margin: 4px 0px 0px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;span style=&quot;text-align: left&quot;&gt;Kruskal&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ kruskal (pGRAbase : Cgraphe*): Cgraphe*&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ findEnsembleFromSommet(tabEns : SensembleSommets*,&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; iSizeTabEns: entier,&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; iSomNum : entier&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ) :&amp;nbsp;SensembleSommets&lt;b&gt;*&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ fusionEnsembles(pENSTab : SensembleSommets**,&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; iSizeTabENS: entier,&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; pENSa : SensembleSommets*,&amp;nbsp;&lt;/p&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;pENSb : SensembleSommets*)&lt;br&gt;&lt;br&gt;&amp;nbsp;+ triArc(firstArc : Carc*, otherArc : Carc*) : boolean" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;fillColor=#d5e8d4;strokeColor=#CC6600;" vertex="1" parent="1">
+          <mxGeometry x="30" y="446" width="330" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-6" value="" style="line;strokeWidth=2;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="850" y="476" width="182.5" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-7" value="" style="line;strokeWidth=2;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="858.75" y="718.5" width="83.75" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-9" value="" style="line;strokeWidth=2;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="858.75" y="733.5" width="85" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-10" value="" style="line;strokeWidth=2;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="852.5" y="838.5" width="140" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-11" value="" style="line;strokeWidth=2;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="852.5" y="780.5" width="335" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-12" value="" style="line;strokeWidth=2;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="330" y="348" width="190" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-13" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="O4WV9W9IA6hF7apiDED8-5" target="bLQx4u1SUMKuMdxCQeeX-4">
+          <mxGeometry x="-0.1913" y="19" width="160" relative="1" as="geometry">
+            <mxPoint x="170.2800000000002" y="317.73800000000006" as="sourcePoint" />
+            <mxPoint x="170.00055317450688" y="358" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O4WV9W9IA6hF7apiDED8-14" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.211;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="O4WV9W9IA6hF7apiDED8-5" target="zVvoivQQcT_Ts4mum_z7-10">
+          <mxGeometry x="-0.2453" y="7" width="160" relative="1" as="geometry">
+            <mxPoint x="629.8000000000002" y="435.73800000000006" as="sourcePoint" />
+            <mxPoint x="629.5205531745069" y="476" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
