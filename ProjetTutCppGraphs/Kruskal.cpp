@@ -3,7 +3,7 @@
 
 
 /**
- * @brief Permet de chercher un arbre couvrant de poids minimal a aprtir d'un graphe
+ * @brief Permet de chercher un arbre couvrant de poids minimal a partir d'un graphe
  * 
  * @param pGRAbase le graphe de depart
  * @return un graphe étant l'arbre couvrant
