@@ -61,7 +61,7 @@ int main(int argc, char*argv[])
 		pGRAGraphArbreCovenant = kruskal(pGRAGraphFile);
 
 
-		std::cout << "--------------Affichage de l'arbre covenant de poids minimal--------------" << std::endl;
+		std::cout << "--------------Affichage de l'arbre couvrant de poids minimal--------------" << std::endl;
 		std::cout << *pGRAGraphArbreCovenant << std::endl;
 
 
