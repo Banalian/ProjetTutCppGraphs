@@ -29,7 +29,7 @@
 * Si le fichier est sous un format different, le programme est susceptible de planter ou d'avoir un comportement non defini.
 *
 *
-* Format du fichier attendu :
+* Format du fichier attendu si les poids sont pris en compte(sinon il n'y a rien après Fin=<Sommet_arrivee_arc>) :
 * NBSommets=<Nombre_de_Sommets_du_graphe>
 * NBArcs=< Nombre_d_arcs_du_graphe >
 * Sommets=[
@@ -39,10 +39,10 @@
 * Numero=<Numero_sommet>
 * ]
 * Arcs=[
-* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>
-* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>
+* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>, Poids=<Poids_arc>
+* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>, Poids=<Poids_arc>
 * …
-* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>
+* Debut=<Sommet_depart_arc>, Fin=<Sommet_arrivee_arc>, Poids=<Poids_arc>
 * ]
 * ----------------------------------------------------------------------
 * Exemple concret :
@@ -54,9 +54,9 @@
 * Numero=3
 * ]
 * Arcs=[
-* Debut=1, Fin=2
-* Debut=2, Fin=3
-* Debut=3, Fin=1
+* Debut=1, Fin=2, Poids=1
+* Debut=2, Fin=3, Poids=1
+* Debut=3, Fin=1, Poids=1
 * ]
 */
 Cgraphe* GraphTextFileParser(char* pcPath, bool bHasPoids = false);

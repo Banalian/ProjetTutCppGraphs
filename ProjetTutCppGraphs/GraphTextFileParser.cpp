@@ -12,7 +12,7 @@
 * Si le fichier est sous un format different, le programme est susceptible de planter ou d'avoir un comportement non defini.
 * 
 *
-* Format du fichier attendu :
+* Format du fichier attendu si les poids sont pris en compte (sinon il n'y a rien après Fin=<Sommet_arrivee_arc>) :
 * NBSommets=<Nombre_de_Sommets_du_graphe>
 * NBArcs=< Nombre_d_arcs_du_graphe >
 * Sommets=[
