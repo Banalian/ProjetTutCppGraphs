@@ -328,6 +328,9 @@ Carc ** Cgraphe::GRAgetTabAllArcsCopy(void)
 
 
 	Carc** pARCtotal = new Carc*[iNbArcTotal];
+	if (pARCtotal == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 
 	//on ajoute tout les arcs dans un grand tableau unique
 	for (iBoucleSom = 0; iBoucleSom < iGRANbSommets; iBoucleSom++) {

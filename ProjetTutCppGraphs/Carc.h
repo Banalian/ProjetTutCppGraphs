@@ -1,4 +1,7 @@
 #pragma once
+#include "Cexception.h"
+#define ErrPoidsNegatif 500
+
 class Carc
 {
 private:
@@ -54,7 +57,7 @@ public:
 
 	/**
 	* @brief Permet de recuperer le poids de l'arc
-	* @return le poids du sommet 
+	* @return le poids
 	*/
 	int ARCgetPoids();
 };

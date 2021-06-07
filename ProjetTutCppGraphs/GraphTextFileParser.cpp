@@ -5,6 +5,7 @@
 /**
 * @brief Cree un graph oriente a partir d'un nom de fichier/chemin vers un fichier
 * @param cPath le chemin menant a ce fichier (exemple :  Graph/G1.txt)
+* @param bHasPoids boolean pour choisir si le fichier a des poids ou non
 * @return un graphe respectant les specification du fichier
 *
 * Precondition :  Le fichier doit respecter un format tres specifique, comme dit dans le sujet de ce projet.
@@ -41,7 +42,7 @@
 * Debut=3, Fin=1, Poids=1
 * ]
 */
-Cgraphe* GraphTextFileParser(char* pcPath){
+Cgraphe* GraphTextFileParser(char* pcPath, bool bHasPoids){
 	std::fstream myFile(pcPath);
 	int iBoucle, nbSommets, nbArcs, numSom, numArcDepart, numArcArrivee, iPoidsArc;
 	char *buf, *line;
@@ -129,9 +130,15 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 				numArcDepart = atoi(buf);
 				buf = strtok(NULL, "=");
 				numArcArrivee = atoi(buf);
-				buf = strtok(NULL, "=");
-				iPoidsArc = atoi(buf);
-				pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee, iPoidsArc);
+				if (bHasPoids) {
+					buf = strtok(NULL, "=");
+					iPoidsArc = atoi(buf);
+					pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee, iPoidsArc);
+				}else{
+					pGRAtemp->GRAAddArc(numArcDepart, numArcArrivee);
+				}
+				
+				
 
 				//std::cout << "Arc " << iBoucle << "VAR numArcDepart = "<< numArcDepart << " AND numArcArrivee = " << numArcArrivee <<std::endl;
 
@@ -178,6 +185,9 @@ Cgraphe* GraphTextFileParser(char* pcPath){
 				break;
 			case ERRSomAsSameNumAsLastSum:
 				std::cout << "Erreur : un sommet ne peut etre ajoute s'il a deja ete cree avant " << std::endl;
+				break;
+			case ErrPoidsNegatif:
+				std::cout << "Erreur : il n'est pas possible de creer un arc de poids negatif" << std::endl;
 				break;
 			case ErrNewMallocFailed:
 				std::cout << "Erreur : echec de l'operateur new" << std::endl;

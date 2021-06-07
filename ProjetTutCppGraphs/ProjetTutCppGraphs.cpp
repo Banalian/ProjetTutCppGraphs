@@ -30,10 +30,11 @@ int main(int argc, char*argv[])
 	Cgraphe *pGRAGraphFile, *pGRAGraphFileInverse, *pGRAGraphArbreCovenant;
 
 	try {
-		pGRAGraphFile = GraphTextFileParser(argv[1]);
+		pGRAGraphFile = GraphTextFileParser(argv[1], true);
 
 
-		std::cout << "--------------Affichage d'un graphe--------------" << std::endl << *pGRAGraphFile << std::endl;
+		std::cout << "--------------Affichage d'un graphe--------------" << std::endl;
+		std::cout << *pGRAGraphFile << std::endl;
 
 		pGRAGraphFileInverse = new Cgraphe(*pGRAGraphFile);
 		if (pGRAGraphFile == nullptr) {
@@ -43,12 +44,13 @@ int main(int argc, char*argv[])
 		
 		pGRAGraphFileInverse->GRAInverserGraph();
 
-		std::cout << "--------------Affichage d'un graphe Inverse--------------" << std::endl << *pGRAGraphFileInverse << std::endl;
+		std::cout << "--------------Affichage d'un graphe Inverse--------------" << std::endl;
+		std::cout << *pGRAGraphFileInverse << std::endl;
 
 		Carc** testTab = pGRAGraphFile->GRAgetTabAllArcsCopy();
 		int nbArcsTot = pGRAGraphFile->GRAgetNbAllArcs();
 
-		std::cout << "--------------Affichage des arcs du graphe de base--------------" << std::endl << *pGRAGraphFileInverse << std::endl;
+		std::cout << "--------------Affichage des arcs du graphe de base--------------" << std::endl;
 		for (int i = 0; i < nbArcsTot; i++) {
 			std::cout	<< "ARC d'origine " << testTab[i]->ARCgetDepart() 
 						<< " et de dest " << testTab[i]->ARCgetDest()
@@ -59,7 +61,8 @@ int main(int argc, char*argv[])
 		pGRAGraphArbreCovenant = kruskal(pGRAGraphFile);
 
 
-		std::cout << "--------------Affichage de l'arbre covenant de poids minimal--------------" << std::endl << *pGRAGraphArbreCovenant << std::endl;
+		std::cout << "--------------Affichage de l'arbre covenant de poids minimal--------------" << std::endl;
+		std::cout << *pGRAGraphArbreCovenant << std::endl;
 
 
 	}

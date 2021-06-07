@@ -22,6 +22,7 @@
 /**
 * @brief Cree un graph oriente a partir d'un nom de fichier/chemin vers un fichier
 * @param cPath le chemin menant a ce fichier (exemple :  Graph/G1.txt)
+* @param bHasPoids boolean pour choisir si le fichier a des poids ou non
 * @return un graphe respectant les specification du fichier
 *
 * Precondition :  Le fichier doit respecter un format tres specifique, comme dit dans le sujet de ce projet.
@@ -58,7 +59,7 @@
 * Debut=3, Fin=1
 * ]
 */
-Cgraphe* GraphTextFileParser(char* pcPath);
+Cgraphe* GraphTextFileParser(char* pcPath, bool bHasPoids = false);
 
 /**
 * @brief Fonction pour passer a la prochaine ligne non vide du fichier. Si une fin de document est trouvee, lance une exception

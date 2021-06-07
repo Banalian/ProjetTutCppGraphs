@@ -1,5 +1,6 @@
 #include "Carc.h"
 
+
 /**
 * @brief Constructeur de Carc, contenant le numero du sommet de destination
 * @param iDest le sommet de destination
@@ -12,6 +13,9 @@ Carc::Carc(int iDest)
 
 Carc::Carc(int iDest, int iStart, int iPoids)
 {
+	if (iPoids < 0) {
+		throw Cexception(ErrPoidsNegatif);
+	}
 	this->iDestination = iDest;
 	this->iDepart = iStart;
 	this->iPoids = iPoids;
@@ -42,11 +46,19 @@ int Carc::ARCgetDest()
 	return iDestination;
 }
 
+/**
+* @brief Permet de recuperer le sommet de depart de l'arc
+* @return le sommet de depart
+*/
 int Carc::ARCgetDepart()
 {
 	return iDepart;
 }
 
+/**
+* @brief Permet de recuperer le poids de l'arc
+* @return le poids
+*/
 int Carc::ARCgetPoids()
 {
 	return iPoids;

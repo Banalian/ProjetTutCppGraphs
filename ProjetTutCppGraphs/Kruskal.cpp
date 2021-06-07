@@ -18,7 +18,13 @@ Cgraphe* kruskal(Cgraphe* pGRAbase) {
 	Carc** pARCtabArcsTotalGraphe = pGRAbase->GRAgetTabAllArcsCopy();
 	
 	Cgraphe* pGRAresult = new Cgraphe();
+	if (pGRAresult == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 	SensembleSommets** pENSTabEnsemble = new SensembleSommets*[iNbSomTotal];
+	if (pENSTabEnsemble == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 	int iENSTaille = iNbSomTotal;
 
 	SensembleSommets* pENSsomU;
@@ -32,9 +38,21 @@ Cgraphe* kruskal(Cgraphe* pGRAbase) {
 
 		//l'ensemnble Qk contient Sk
 		pENSTabEnsemble[iBoucle] = new SensembleSommets();
+		if (pENSTabEnsemble[iBoucle] == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
+
 		pENSTabEnsemble[iBoucle]->iTailleTab = 1;
+
 		pENSTabEnsemble[iBoucle]->pSOMtab = new Csommet*[1];
+		if (pENSTabEnsemble[iBoucle]->pSOMtab == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
+
 		pENSTabEnsemble[iBoucle]->pSOMtab[0] = new Csommet(pSOMtabSommetsGraphe[iBoucle]->SOMGetSomNum());
+		if (pENSTabEnsemble[iBoucle]->pSOMtab[0] == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 	}
 
 	//trier tab arc ordre croissant du poids
@@ -103,16 +121,28 @@ void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSom
 
 	//nouvel ensemble C de taille a+b
 	pENSc = new SensembleSommets();
+	if (pENSc == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 	pENSc->iTailleTab = iTailleC;
 	pENSc->pSOMtab = new Csommet*[iTailleC];
+	if (pENSc->pSOMtab == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 
 	//recopie de A dans C
 	for (iBoucle = 0; iBoucle < pENSa->iTailleTab; iBoucle++) {
 		pENSc->pSOMtab[iBoucle] = new Csommet(*pENSa->pSOMtab[iBoucle]);
+		if (pENSc->pSOMtab[iBoucle] == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 	}
 	//recopie de B dans C
 	for (iBoucle = pENSa->iTailleTab; iBoucle < iTailleC; iBoucle++) {
 		pENSc->pSOMtab[iBoucle] = new Csommet(*pENSb->pSOMtab[iBoucle - pENSa->iTailleTab]);
+		if (pENSc->pSOMtab[iBoucle] == nullptr) {
+			throw Cexception(ErrNewMallocFailed);
+		}
 	}
 	
 	
@@ -127,6 +157,9 @@ void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSom
 
 	//nouveau tab EnsB de taille -1
 	pENSNewTab = new SensembleSommets*[iSizeTabENS - 1];
+	if (pENSNewTab == nullptr) {
+		throw Cexception(ErrNewMallocFailed);
+	}
 
 	//recopie tab EnsA dans ENSB
 	for (iBoucle = 0, iDecalage = 0; iBoucle < iSizeTabENS; iBoucle++) {
@@ -150,9 +183,9 @@ void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSom
 	}
 	delete[] pENSa->pSOMtab;
 	pENSa->pSOMtab = nullptr;
-	pENStemp = pENSa;
+	//pENStemp = pENSa;
+	delete pENSa;
 	pENSa = nullptr;
-	delete pENStemp;
 
 	//delete de B 
 	for (iBoucle = 0; iBoucle < pENSb->iTailleTab; iBoucle++) {
@@ -161,9 +194,9 @@ void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSom
 	}
 	delete[] pENSb->pSOMtab;
 	pENSb->pSOMtab = nullptr;
-	pENStemp = pENSb;
+	//pENStemp = pENSb;
+	delete pENSb;
 	pENSb = nullptr;
-	delete pENStemp;
 	
 
 

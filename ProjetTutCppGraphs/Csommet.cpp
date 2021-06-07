@@ -419,13 +419,25 @@ void Csommet::SOMAfficherSommet()
 	std::cout << "\t Liste des arcs entrants : \n" ;
 	for (iBoucle; iBoucle < iSOMNbrArcArrivant; iBoucle++)
 	{
-		std::cout << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
+		if (pARCtabArrivant[iBoucle]->ARCgetPoids() >= 0) {
+			std::cout << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << " Poids = "<< pARCtabArrivant[iBoucle]->ARCgetPoids() <<std::endl;
+		}
+		else {
+			std::cout << "\t\t" << pARCtabArrivant[iBoucle]->ARCgetDest() << std::endl;
+		}
+		
 	}
 	iBoucle = 0;
 	std::cout << "\t Liste des arcs sortants : \n";
 	for (iBoucle; iBoucle < iSOMNbrArcSortant; iBoucle++)
 	{
-		std::cout << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
+		if (pARCtabArrivant[iBoucle]->ARCgetPoids() >= 0) {
+			std::cout << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << " Poids = " << pARCtabSortant[iBoucle]->ARCgetPoids() << std::endl;
+		}
+		else {
+			std::cout << "\t\t" << pARCtabSortant[iBoucle]->ARCgetDest() << std::endl;
+		}
+		
 	}
 }
 

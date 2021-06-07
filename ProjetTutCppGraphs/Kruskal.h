@@ -1,6 +1,6 @@
 #pragma once
 #include "Cgraphe.h"
-#include <algorithm>
+#include <algorithm> //pour utiliser std:sort
 
 struct SensembleSommets
 {
