@@ -89,8 +89,13 @@ Csommet::~Csommet()
 	{
 		delete pARCtabSortant[iBoucle];
 	}
-	delete pARCtabArrivant;
-	delete pARCtabSortant;
+
+	if (pARCtabArrivant) {
+		delete[] pARCtabArrivant;
+	}
+	if (pARCtabArrivant) {
+		delete[] pARCtabSortant;
+	}
 }
 
 /**
@@ -132,7 +137,9 @@ void Csommet::SOMAddArcArrivant(int iDest)
 		throw Cexception(ErrNewMallocFailed);
 	}
 
-	delete[] pARCtabArrivant;
+	if (pARCtabArrivant) {
+		delete[] pARCtabArrivant;
+	}
 	pARCtabArrivant = pArctabTemp;
 
 	iSOMNbrArcArrivant += 1;
@@ -179,7 +186,9 @@ void Csommet::SOMAddArcArrivant(int iDest)
 		 throw Cexception(ErrNewMallocFailed);
 	 }
 
-	 delete[] pARCtabArrivant;
+	 if (pARCtabArrivant) {
+		 delete[] pARCtabArrivant;
+	 }
 	 pARCtabArrivant = pArctabTemp;
 
 	 iSOMNbrArcArrivant += 1;
@@ -224,7 +233,9 @@ void Csommet::SOMAddArcArrivant(int iDest)
 	if (pArctabTemp[iSOMNbrArcSortant] == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
-	delete[] pARCtabSortant;
+	if (pARCtabSortant) {
+		delete[] pARCtabSortant;
+	}
 	pARCtabSortant = pArctabTemp;
 
 	iSOMNbrArcSortant += 1;
@@ -269,7 +280,10 @@ void Csommet::SOMAddArcSortant(int iDest, int iPoidsArc)
 	if (pArctabTemp[iSOMNbrArcSortant] == nullptr) {
 		throw Cexception(ErrNewMallocFailed);
 	}
-	delete[] pARCtabSortant;
+
+	if (pARCtabSortant) {
+		delete[] pARCtabSortant;
+	}
 	pARCtabSortant = pArctabTemp;
 
 	iSOMNbrArcSortant += 1;
@@ -319,7 +333,9 @@ void Csommet::SOMDeleteArcArrivant(int iDest)
 	}
 	else
 	{
-		delete[] pARCtabArrivant;
+		if (pARCtabArrivant) {
+			delete[] pARCtabArrivant;
+		}
 		pARCtabArrivant = nullptr;
 	}
 }
@@ -368,7 +384,9 @@ void Csommet::SOMDeleteArcSortant(int iDest)
 	}
 	else
 	{
-		delete[] pARCtabSortant;
+		if (pARCtabSortant) {
+			delete[] pARCtabSortant;
+		}
 		pARCtabSortant = nullptr;
 	}
 }
@@ -535,8 +553,12 @@ Csommet& Csommet::operator=(Csommet& sommet)
 	{
 		delete pARCtabSortant[iBoucle];
 	}
-	delete[] pARCtabArrivant;
-	delete[] pARCtabSortant;
+	if (pARCtabArrivant) {
+		delete[] pARCtabArrivant;
+	}
+	if (pARCtabSortant) {
+		delete[] pARCtabSortant;
+	}
 
 	iBoucle = 0;
 

@@ -201,7 +201,7 @@ void fusionEnsembles(SensembleSommets** &pENSTab, int &iSizeTabENS, SensembleSom
 
 
 
-	delete[] pENSTab;
+	//delete[] pENSTab;
 	pENSTab = pENSNewTab;
 	iSizeTabENS--;
 }
