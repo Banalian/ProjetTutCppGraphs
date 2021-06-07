@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-07T12:09:54.213Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="s_vDGjzo31XFUuuF3zPZ" version="14.7.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-07T12:13:14.085Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36" etag="lm4TkaNQW1K2JTfSH5mN" version="14.7.2" type="github">
   <diagram id="o4O8a7EBtK5oRw8HxuOW" name="Page-1">
     <mxGraphModel dx="1185" dy="635" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -79,13 +79,13 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="PUwavAEvDR2ULnOhyYn0-1" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;span style=&quot;text-align: left&quot;&gt;GraphTextFileParser&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ GraphTextFileParser(pcPath : char*): Cgraphe*&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ getNextLine(myFile : std::fstream*, line : char* )&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="390" y="716" width="280" height="80" as="geometry" />
+        <mxCell id="PUwavAEvDR2ULnOhyYn0-1" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;span style=&quot;text-align: left&quot;&gt;GraphTextFileParser&lt;/span&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ GraphTextFileParser(pcPath : char*, bHasPoids : boolean): Cgraphe*&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ getNextLine(myFile : std::fstream*, line : char* )&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
+          <mxGeometry x="390" y="716" width="390" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="PUwavAEvDR2ULnOhyYn0-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;exitX=0.329;exitY=1.008;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="bLQx4u1SUMKuMdxCQeeX-4" target="PUwavAEvDR2ULnOhyYn0-1" edge="1">
+        <mxCell id="PUwavAEvDR2ULnOhyYn0-2" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;exitX=0.329;exitY=1.008;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.184;entryY=0.019;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="bLQx4u1SUMKuMdxCQeeX-4" target="PUwavAEvDR2ULnOhyYn0-1" edge="1">
           <mxGeometry x="0.1181" y="-30" width="160" relative="1" as="geometry">
             <mxPoint x="540" y="240" as="sourcePoint" />
-            <mxPoint x="370" y="536" as="targetPoint" />
+            <mxPoint x="457" y="715" as="targetPoint" />
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
